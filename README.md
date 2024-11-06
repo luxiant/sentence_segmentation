@@ -4,7 +4,7 @@ This is a regex rule-based sentence segmenter written in pure rust. This crate i
 
 ## Features
 
-- **Multilingual Support**: The crate supports sentence segmentation for a wide variety of languages (see list below).
+- **Multilingual Support**: The crate supports sentence segmentation for 76 languages (see list below).
 ```
 processor::amharic
 processor::afrikaans
@@ -92,7 +92,7 @@ To use this crate, add it to your `Cargo.toml` dependencies:
 
 ```
 [dependencies]
-sentence_segmentation = "1.0.0"
+sentence_segmentation = "1.0.2"
 ```
 
 ## Usage
