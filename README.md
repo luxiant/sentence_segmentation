@@ -1,6 +1,6 @@
 # Sentence Segmentation
 
-This is a regex rule-based sentence segmenter inspired by the Ruby Pragmatic Segmenter by diasks2 ([GitHub Repo](https://github.com/diasks2/pragmatic_segmenter)).
+This is a regex rule-based sentence segmenter written in pure rust. This crate was inspired by the Ruby Pragmatic Segmenter by diasks2 ([GitHub Repo](https://github.com/diasks2/pragmatic_segmenter)).
 
 ## Features
 
