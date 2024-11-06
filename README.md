@@ -102,11 +102,15 @@ use sentence_segmentation::processor;
 
 fn main() {
     let text = "이 크레이트는 자연어 처리를 위해서 만들어진 크레이트입니다. 정규표현식 기반의 간단한 알고리즘을 통해 문장 단위로 분리하기에 매우 빠른 속도로 문장을 분리할 수 있습니다. 이 크레이트는 기본적인 전처리도 같이 수행하므로 문장 분리가 목적이 아니더라도 전처리를 위해서 사용할 수도 있습니다.";
-    let sentences = processor::english(text);
+    let sentences = processor::korean(text);
 
     for sentence in sentences {
         println!("{}", sentence);
     }
+    // 이 크레이트는 자연어 처리를 위해서 만들어진 크레이트입니다.
+    // 정규표현식 기반의 간단한 알고리즘을 통해 문장 단위로 분리하기에 매우 빠른 속도로 문장을 분리할 수 있습니다.
+    // 이 크레이트는 기본적인 전처리도 같이 수행하므로 문장 분리가 목적이 아니더라도 전처리를 위해서 사용할 수도 있습니다.
+
 }
 ```
 
