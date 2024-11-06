@@ -1,0 +1,13 @@
+[package]
+name = "sentence_segmentation"
+version = "1.0.0"
+edition = "2021"
+include = ["src/abbreviation_map.json"]
+description = "A rule-based sentence_segmenter, inspired by ruby pragmatic segmenter by diasks2 (repo: https://github.com/diasks2/pragmatic_segmenter)"
+license = "MIT"
+repository = "https://github.com/luxiant/sentence_segmentation"
+
+[dependencies]
+fancy-regex = "*"
+regex = "*"
+serde_json = "*"
