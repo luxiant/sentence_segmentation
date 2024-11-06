@@ -5,82 +5,84 @@ This is a regex rule-based sentence segmenter inspired by the Ruby Pragmatic Seg
 ## Features
 
 - **Multilingual Support**: The crate supports sentence segmentation for a wide variety of languages (see list below).
-        processor::amharic
-        processor::afrikaans
-        processor::albanian
-        processor::arabic
-        processor::armenian
-        processor::azerbaijani
-        processor::basque
-        processor::belarusian
-        processor::bengali
-        processor::bosnian
-        processor::bulgarian
-        processor::catalan
-        processor::chinese
-        processor::croatian
-        processor::czech
-        processor::danish
-        processor::dutch
-        processor::english
-        processor::esperanto
-        processor::estonian
-        processor::finnish
-        processor::french
-        processor::ganda
-        processor::georgian
-        processor::german
-        processor::greek
-        processor::gujarati
-        processor::hausa
-        processor::hebrew
-        processor::hindi
-        processor::hungarian
-        processor::icelandic
-        processor::indonesian
-        processor::irish
-        processor::italian
-        processor::japanese
-        processor::kazakh
-        processor::korean
-        processor::latin
-        processor::latvian
-        processor::lithuanian
-        processor::macedonian
-        processor::malay
-        processor::maori
-        processor::marathi
-        processor::mongolian
-        processor::norwegian
-        processor::persian
-        processor::polish
-        processor::portuguese
-        processor::punjabi_eastern
-        processor::punjabi_western
-        processor::romanian
-        processor::russian
-        processor::serbian
-        processor::shona
-        processor::slovak
-        processor::slovenian
-        processor::somali
-        processor::sotho
-        processor::spanish
-        processor::swahili
-        processor::swedish
-        processor::tagalog
-        processor::tamil
-        processor::telugu
-        processor::tsonga
-        processor::tswana
-        processor::turkish
-        processor::ukrainian
-        processor::urdu
-        processor::vietnamese
-        processor::welsh
-        processor::xhosa
-        processor::yoruba
-        processor::zulu
+```
+processor::amharic
+processor::afrikaans
+processor::albanian
+processor::arabic
+processor::armenian
+processor::azerbaijani
+processor::basque
+processor::belarusian
+processor::bengali
+processor::bosnian
+processor::bulgarian
+processor::catalan
+processor::chinese
+processor::croatian
+processor::czech
+processor::danish
+processor::dutch
+processor::english
+processor::esperanto
+processor::estonian
+processor::finnish
+processor::french
+processor::ganda
+processor::georgian
+processor::german
+processor::greek
+processor::gujarati
+processor::hausa
+processor::hebrew
+processor::hindi
+processor::hungarian
+processor::icelandic
+processor::indonesian
+processor::irish
+processor::italian
+processor::japanese
+processor::kazakh
+processor::korean
+processor::latin
+processor::latvian
+processor::lithuanian
+processor::macedonian
+processor::malay
+processor::maori
+processor::marathi
+processor::mongolian
+processor::norwegian
+processor::persian
+processor::polish
+processor::portuguese
+processor::punjabi_eastern
+processor::punjabi_western
+processor::romanian
+processor::russian
+processor::serbian
+processor::shona
+processor::slovak
+processor::slovenian
+processor::somali
+processor::sotho
+processor::spanish
+processor::swahili
+processor::swedish
+processor::tagalog
+processor::tamil
+processor::telugu
+processor::tsonga
+processor::tswana
+processor::turkish
+processor::ukrainian
+processor::urdu
+processor::vietnamese
+processor::welsh
+processor::xhosa
+processor::yoruba
+processor::zulu
+```
 - **Modular Segmentation**: Each language has a dedicated segmentation function, making it simple to use language-specific rules.
 - **Preprocessing**: Through regex, the input text will also be preprocessed and denoised. The result will be a vector of cleaned strings which are ready for the normalization that you planned. 
 
