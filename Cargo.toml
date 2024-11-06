@@ -16,3 +16,6 @@ path = "src/lib.rs"
 fancy-regex = "0.14.0"
 regex = "1.11.1"
 serde_json = "1.0.132"
+
+[package.metadata]
+include = ["src/abbreviation_map.json"]

@@ -1,5 +1,8 @@
+const ABBREVIATION_MAP_JSON: &str = include_str!("abbreviation_map.json");
+
 pub mod processor {
-    use std::fs;
+    use super::*;
+    // use std::fs;
     use serde_json::Value;
     use std::collections::HashMap;
     use fancy_regex::Regex;
@@ -33,21 +36,25 @@ pub mod processor {
         numbered_list_regex.replace_all(&filtered_string, " ").to_string();
 
         // step 3 : mask abbreviations
-        let abb_data = fs::read_to_string("src/abbreviation_map.json").expect("Unable to read file");
-        let json: Value = serde_json::from_str(&abb_data).expect("Unable to parse JSON");
+        // let abb_data = fs::read_to_string("src/abbreviation_map.json").expect("Unable to read file");
+        // let json: Value = serde_json::from_str(&abb_data).expect("Unable to parse JSON");
+        // let vec_of_vecs: Vec<Vec<String>> = serde_json::from_value(json).expect("Unable to convert to Vec<Vec<String>>");
+        // let mut abbreviations: HashMap<&str, &str> = HashMap::new();
+        // for pair in vec_of_vecs {
+        //     abbreviations.insert(Box::leak(pair[0].clone().into_boxed_str()), Box::leak(pair[1].clone().into_boxed_str()));
+        // }
+
+        // for (key, value) in abbreviations {
+        //     let escaped_key = key.replace(".", r"\.");
+        //     let key_regex = Regex::new(&format!(r"(?<!\S){}(?!\w)", escaped_key)).unwrap();
+        //     filtered_string = key_regex.replace_all(&filtered_string, value).to_string();
+        // }
+
+        let json: Value = serde_json::from_str(ABBREVIATION_MAP_JSON).expect("Unable to parse JSON");
         let vec_of_vecs: Vec<Vec<String>> = serde_json::from_value(json).expect("Unable to convert to Vec<Vec<String>>");
         let mut abbreviations: HashMap<&str, &str> = HashMap::new();
         for pair in vec_of_vecs {
             abbreviations.insert(Box::leak(pair[0].clone().into_boxed_str()), Box::leak(pair[1].clone().into_boxed_str()));
-        }
-
-        // let abbreviations: HashMap<&str, &str> = vec![
-
-        // ].into_iter().collect();
-        for (key, value) in abbreviations {
-            let escaped_key = key.replace(".", r"\.");
-            let key_regex = Regex::new(&format!(r"(?<!\S){}(?!\w)", escaped_key)).unwrap();
-            filtered_string = key_regex.replace_all(&filtered_string, value).to_string();
         }
 
         // step 4 : number rules
