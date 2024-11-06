@@ -7,6 +7,10 @@ description = "A rule-based sentence_segmenter, inspired by ruby pragmatic segme
 license = "MIT"
 repository = "https://github.com/luxiant/sentence_segmentation"
 
+[lib]
+name = "sentence_segmentation"
+path = "src/lib.rs"
+
 [dependencies]
 fancy-regex = "*"
 regex = "*"
