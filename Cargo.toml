@@ -9,7 +9,7 @@ repository = "https://github.com/luxiant/sentence_segmentation"
 
 [lib]
 name = "sentence_segmentation"
-path = "src/lib.rs"
+path = "./src/lib.rs"
 
 [dependencies]
 fancy-regex = "*"
