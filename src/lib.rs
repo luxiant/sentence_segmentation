@@ -248,7 +248,7 @@ pub mod processor {
     }
 
     pub fn afrikaans(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[a-zA-Z])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[a-zA-Z])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[a-zA-Z])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -278,7 +278,7 @@ pub mod processor {
     }
 
     pub fn albanian(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZÇçËë\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZÇçËë\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[a-zA-ZÇçËë])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[a-zA-ZÇçËë])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[a-zA-ZÇçËë])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -308,7 +308,7 @@ pub mod processor {
     }
 
     pub fn arabic(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\u{0600}-\u{06FF}\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\u{0600}-\u{06FF}\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[a-zA-Z\u{0600}-\u{06FF}])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[a-zA-Z\u{0600}-\u{06FF}])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[a-zA-Z\u{0600}-\u{06FF}])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -338,7 +338,7 @@ pub mod processor {
     }
 
     pub fn armenian(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\u{0531}-\u{058F}\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\u{0531}-\u{058F}\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[A-Za-z\u{0531}-\u{058F}])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[A-Za-z\u{0531}-\u{058F}])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[A-Za-z\u{0531}-\u{058F}])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -368,7 +368,7 @@ pub mod processor {
     }
 
     pub fn azerbaijani(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZÇŞĞÖÜİƏçşğıöüə\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZÇŞĞÖÜİƏçşğıöüə\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[a-zA-ZÇŞĞÖÜİƏçşğıöüə])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[a-zA-ZÇŞĞÖÜİƏçşğıöüə])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[a-zA-ZÇŞĞÖÜİƏçşğıöüə])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -398,7 +398,7 @@ pub mod processor {
     }
 
     pub fn basque(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZÑÇñç\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZÑÇñç\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[a-zA-ZÑÇñç])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[a-zA-ZÑÇñç])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[a-zA-ZÑÇñç])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -428,7 +428,7 @@ pub mod processor {
     }
 
     pub fn belarusian(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZАБВГДЕЁЖЗІЙКЛМНОПРСТУФХЦЧШЫЬЭЮЯабвгдеёжзійклмнопрстуфхцчшыьэюя\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZАБВГДЕЁЖЗІЙКЛМНОПРСТУФХЦЧШЫЬЭЮЯабвгдеёжзійклмнопрстуфхцчшыьэюя\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[a-zA-ZАБВГДЕЁЖЗІЙКЛМНОПРСТУФХЦЧШЫЬЭЮЯабвгдеёжзійклмнопрстуфхцчшыьэюя])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[a-zA-ZАБВГДЕЁЖЗІЙКЛМНОПРСТУФХЦЧШЫЬЭЮЯабвгдеёжзійклмнопрстуфхцчшыьэюя])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[a-zA-ZАБВГДЕЁЖЗІЙКЛМНОПРСТУФХЦЧШЫЬЭЮЯабвгдеёжзійклмнопрстуфхцчшыьэюя])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -458,7 +458,7 @@ pub mod processor {
     }
 
     pub fn bengali(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\u{0980}-\u{09FF}\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\u{0980}-\u{09FF}\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[a-zA-Z\u{0980}-\u{09FF}])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[a-zA-Z\u{0980}-\u{09FF}])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[a-zA-Z\u{0980}-\u{09FF}])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -488,7 +488,7 @@ pub mod processor {
     }
 
     pub fn bosnian(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZČĆDžĐŠŽčćdžđšž\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZČĆDžĐŠŽčćdžđšž\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[a-zA-ZČĆDžĐŠŽčćdžđšž])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[a-zA-ZČĆDžĐŠŽčćdžđšž])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[a-zA-ZČĆDžĐŠŽčćdžđšž])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -518,7 +518,7 @@ pub mod processor {
     }
 
     pub fn bulgarian(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\u{0410}-\u{042F}\u{0430}-\u{044F}\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\u{0410}-\u{042F}\u{0430}-\u{044F}\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[a-zA-Z\u{0410}-\u{042F}\u{0430}-\u{044F}])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[a-zA-Z\u{0410}-\u{042F}\u{0430}-\u{044F}])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[a-zA-Z\u{0410}-\u{042F}\u{0430}-\u{044F}])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -548,7 +548,7 @@ pub mod processor {
     }
 
     pub fn catalan(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZÀÁÂÈÉÊÌÍÒÓÔÙÚÜÇàáâèéêìíòóôùúüç\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZÀÁÂÈÉÊÌÍÒÓÔÙÚÜÇàáâèéêìíòóôùúüç\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[a-zA-ZÀÁÂÈÉÊÌÍÒÓÔÙÚÜÇàáâèéêìíòóôùúüç])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[a-zA-ZÀÁÂÈÉÊÌÍÒÓÔÙÚÜÇàáâèéêìíòóôùúüç])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[a-zA-ZÀÁÂÈÉÊÌÍÒÓÔÙÚÜÇàáâèéêìíòóôùúüç])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -578,7 +578,7 @@ pub mod processor {
     }
 
     pub fn chinese(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\u{4E00}-\u{9FFF}\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\u{4E00}-\u{9FFF}\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[a-zA-Z\u{4E00}-\u{9FFF}])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[a-zA-Z\u{4E00}-\u{9FFF}])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[a-zA-Z\u{4E00}-\u{9FFF}])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -608,7 +608,7 @@ pub mod processor {
     }
 
     pub fn croatian(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZČĆŽŠĐčćžšđ\u{0400}-\u{042F}\u{0430}-\u{044F}\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZČĆŽŠĐčćžšđ\u{0400}-\u{042F}\u{0430}-\u{044F}\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[a-zA-ZČĆŽŠĐčćžšđ\u{0400}-\u{042F}\u{0430}-\u{044F}])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[a-zA-ZČĆŽŠĐčćžšđ\u{0400}-\u{042F}\u{0430}-\u{044F}])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[a-zA-ZČĆŽŠĐčćžšđ\u{0400}-\u{042F}\u{0430}-\u{044F}])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -638,7 +638,7 @@ pub mod processor {
     }
 
     pub fn czech(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZĚŠČŘŽÝÁÍÉÚŮÓěščřžýáíéúůó\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZĚŠČŘŽÝÁÍÉÚŮÓěščřžýáíéúůó\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[a-zA-ZĚŠČŘŽÝÁÍÉÚŮÓěščřžýáíéúůó])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[a-zA-ZĚŠČŘŽÝÁÍÉÚŮÓěščřžýáíéúůó])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[a-zA-ZĚŠČŘŽÝÁÍÉÚŮÓěščřžýáíéúůó])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -668,7 +668,7 @@ pub mod processor {
     }
 
     pub fn danish(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZØÆÅøæå\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZØÆÅøæå\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[a-zA-ZØÆÅøæå])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[a-zA-ZØÆÅøæå])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[a-zA-ZØÆÅøæå])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -698,7 +698,7 @@ pub mod processor {
     }
 
     pub fn dutch(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZÄËÏÖÜÇÀÈÌÒÙäëïöüçàèìòù\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZÄËÏÖÜÇÀÈÌÒÙäëïöüçàèìòù\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[a-zA-ZÄËÏÖÜÇÀÈÌÒÙäëïöüçàèìòù])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[a-zA-ZÄËÏÖÜÇÀÈÌÒÙäëïöüçàèìòù])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[a-zA-ZÄËÏÖÜÇÀÈÌÒÙäëïöüçàèìòù])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -728,7 +728,7 @@ pub mod processor {
     }
 
     pub fn english(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[A-Za-z])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[A-Za-z])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[A-Za-z])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -758,7 +758,7 @@ pub mod processor {
     }
 
     pub fn esperanto(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZĈĉĜĝĤĥĴĵŜŝŬŭ\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZĈĉĜĝĤĥĴĵŜŝŬŭ\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[A-Za-zĈĉĜĝĤĥĴĵŜŝŬŭ])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[A-Za-zĈĉĜĝĤĥĴĵŜŝŬŭ])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[A-Za-zĈĉĜĝĤĥĴĵŜŝŬŭ])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -788,7 +788,7 @@ pub mod processor {
     }
 
     pub fn estonian(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZŠŽÕÄÖÜšžõäöü\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZŠŽÕÄÖÜšžõäöü\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[a-zA-ZŠŽÕÄÖÜšžõäöü])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[a-zA-ZŠŽÕÄÖÜšžõäöü])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[a-zA-ZŠŽÕÄÖÜšžõäöü])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -818,7 +818,7 @@ pub mod processor {
     }
 
     pub fn finnish(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZÄÖÅäöå\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZÄÖÅäöå\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[A-Za-zÄÖÅäöå])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[A-Za-zÄÖÅäöå])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[A-Za-zÄÖÅäöå])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -848,7 +848,7 @@ pub mod processor {
     }
 
     pub fn french(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZÀÂÆÇÉÈÊËÎÏÔŒÙÛÜŸàâæçéèêëîïôœùûüÿ\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZÀÂÆÇÉÈÊËÎÏÔŒÙÛÜŸàâæçéèêëîïôœùûüÿ\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[A-Za-zÀÂÆÇÉÈÊËÎÏÔŒÙÛÜŸàâæçéèêëîïôœùûüÿ])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[A-Za-zÀÂÆÇÉÈÊËÎÏÔŒÙÛÜŸàâæçéèêëîïôœùûüÿ])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[A-Za-zÀÂÆÇÉÈÊËÎÏÔŒÙÛÜŸàâæçéèêëîïôœùûüÿ])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -878,7 +878,7 @@ pub mod processor {
     }
 
     pub fn ganda(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZÀÈÙÁÉÍÓÚàèùáéíóú\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZÀÈÙÁÉÍÓÚàèùáéíóú\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[A-Za-zÀÈÙÁÉÍÓÚàèùáéíóú])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[A-Za-zÀÈÙÁÉÍÓÚàèùáéíóú])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[A-Za-zÀÈÙÁÉÍÓÚàèùáéíóú])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -908,7 +908,7 @@ pub mod processor {
     }
 
     pub fn georgian(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\u{10A0}-\u{10FF}\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\u{10A0}-\u{10FF}\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[A-Za-z\u{10A0}-\u{10FF}])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[A-Za-z\u{10A0}-\u{10FF}])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[A-Za-z\u{10A0}-\u{10FF}])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -938,7 +938,7 @@ pub mod processor {
     }
 
     pub fn german(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZÄÖÜẞäöüß\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZÄÖÜẞäöüß\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[A-Za-zÄÖÜẞäöüß])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[A-Za-zÄÖÜẞäöüß])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[A-Za-zÄÖÜẞäöüß])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -968,7 +968,7 @@ pub mod processor {
     }
 
     pub fn greek(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZάέήίόύώΆΈΉΊΌΎΏ\u{0391}-\u{03A9}\u{03B1}-\u{03C9}\u{03C2}\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZάέήίόύώΆΈΉΊΌΎΏ\u{0391}-\u{03A9}\u{03B1}-\u{03C9}\u{03C2}\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[A-Za-zάέήίόύώΆΈΉΊΌΎΏ\u{0391}-\u{03A9}\u{03B1}-\u{03C9}])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[A-Za-zάέήίόύώΆΈΉΊΌΎΏ\u{0391}-\u{03A9}\u{03B1}-\u{03C9}])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[A-Za-zάέήίόύώΆΈΉΊΌΎΏ\u{0391}-\u{03A9}\u{03B1}-\u{03C9}])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -998,7 +998,7 @@ pub mod processor {
     }
 
     pub fn gujarati(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\u{0A80}-\u{0AFF}\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\u{0A80}-\u{0AFF}\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[A-Za-z\u{0A80}-\u{0AFF}])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[A-Za-z\u{0A80}-\u{0AFF}])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[A-Za-z\u{0A80}-\u{0AFF}])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -1028,7 +1028,7 @@ pub mod processor {
     }
 
     pub fn hausa(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZƁɓƊɗƘƙ\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZƁɓƊɗƘƙ\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[A-Za-zƁɓƊɗƘƙ])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[A-Za-zƁɓƊɗƘƙ])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[A-Za-zƁɓƊɗƘƙ])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -1058,7 +1058,7 @@ pub mod processor {
     }
 
     pub fn hebrew(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\u{0590}-\u{05FF}\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\u{0590}-\u{05FF}\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[a-zA-Z\u{0590}-\u{05FF}])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[a-zA-Z\u{0590}-\u{05FF}])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[a-zA-Z\u{0590}-\u{05FF}])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -1088,7 +1088,7 @@ pub mod processor {
     }
 
     pub fn hindi(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\u{0900}-\u{097F}\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\u{0900}-\u{097F}\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[A-Za-z\u{0900}-\u{097F}])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[A-Za-z\u{0900}-\u{097F}])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[A-Za-z\u{0900}-\u{097F}])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -1118,7 +1118,7 @@ pub mod processor {
     }
 
     pub fn hungarian(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZÁÉÍÓÖŐÚÜáéíóöőúü\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZÁÉÍÓÖŐÚÜáéíóöőúü\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[A-Za-zÁÉÍÓÖŐÚÜáéíóöőúü])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[A-Za-zÁÉÍÓÖŐÚÜáéíóöőúü])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[A-Za-zÁÉÍÓÖŐÚÜáéíóöőúü])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -1148,7 +1148,7 @@ pub mod processor {
     }
 
     pub fn icelandic(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZÁáÉéÍíÓóÚúÝýÞþÆæÖö\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZÁáÉéÍíÓóÚúÝýÞþÆæÖö\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[A-Za-zÁáÉéÍíÓóÚúÝýÞþÆæÖö])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[A-Za-zÁáÉéÍíÓóÚúÝýÞþÆæÖö])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[A-Za-zÁáÉéÍíÓóÚúÝýÞþÆæÖö])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -1178,7 +1178,7 @@ pub mod processor {
     }
 
     pub fn indonesian(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZÁáÉéÍíÓóÚúŃńÇçĐđ\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZÁáÉéÍíÓóÚúŃńÇçĐđ\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[A-Za-zÁáÉéÍíÓóÚúŃńÇçĐđ])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[A-Za-zÁáÉéÍíÓóÚúŃńÇçĐđ])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[A-Za-zÁáÉéÍíÓóÚúŃńÇçĐđ])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -1208,7 +1208,7 @@ pub mod processor {
     }
 
     pub fn irish(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZÁáÉéÍíÓóÚúÇç\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZÁáÉéÍíÓóÚúÇç\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[A-Za-zÁáÉéÍíÓóÚúÇç])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[A-Za-zÁáÉéÍíÓóÚúÇç])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[A-Za-zÁáÉéÍíÓóÚúÇç])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -1238,7 +1238,7 @@ pub mod processor {
     }
 
     pub fn italian(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZÀÈÉÌÒÙàèéìòù\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZÀÈÉÌÒÙàèéìòù\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[A-Za-zÀÈÉÌÒÙàèéìòù])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[A-Za-zÀÈÉÌÒÙàèéìòù])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[A-Za-zÀÈÉÌÒÙàèéìòù])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -1268,7 +1268,7 @@ pub mod processor {
     }
 
     pub fn japanese(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\u{3040}-\u{309F}\u{30A0}-\u{30FF}\u{4E00}-\u{9FAF}\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\u{3040}-\u{309F}\u{30A0}-\u{30FF}\u{4E00}-\u{9FAF}\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[a-zA-Z\u{3040}-\u{309F}\u{30A0}-\u{30FF}\u{4E00}-\u{9FAF}])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[a-zA-Z\u{3040}-\u{309F}\u{30A0}-\u{30FF}\u{4E00}-\u{9FAF}])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[a-zA-Z\u{3040}-\u{309F}\u{30A0}-\u{30FF}\u{4E00}-\u{9FAF}])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -1298,7 +1298,7 @@ pub mod processor {
     }
 
     pub fn kazakh(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZÁáÀàÂâÄäÇçEéFfGgHhÍíJjKkLlmMNnOóPpRrSsŞşTtUúVvYyZz\u{0400}-\u{04FF}\u{04D8}\u{0492}\u{042C}\u{04A2}\u{04A2}\u{04B0}\u{04AE}\u{04B1}\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZÁáÀàÂâÄäÇçEéFfGgHhÍíJjKkLlmMNnOóPpRrSsŞşTtUúVvYyZz\u{0400}-\u{04FF}\u{04D8}\u{0492}\u{042C}\u{04A2}\u{04A2}\u{04B0}\u{04AE}\u{04B1}\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[A-Za-zÁáÀàÂâÄäÇçEéFfGgHhÍíJjKkLlmMNnOóPpRrSsŞşTtUúVvYyZz\u{0400}-\u{04FF}\u{04D8}\u{0492}\u{042C}\u{04A2}\u{04A2}\u{04B0}\u{04AE}\u{04B1}])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[A-Za-zÁáÀàÂâÄäÇçEéFfGgHhÍíJjKkLlmMNnOóPpRrSsŞşTtUúVvYyZz\u{0400}-\u{04FF}\u{04D8}\u{0492}\u{042C}\u{04A2}\u{04A2}\u{04B0}\u{04AE}\u{04B1}])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[A-Za-zÁáÀàÂâÄäÇçEéFfGgHhÍíJjKkLlmMNnOóPpRrSsŞşTtUúVvYyZz\u{0400}-\u{04FF}\u{04D8}\u{0492}\u{042C}\u{04A2}\u{04A2}\u{04B0}\u{04AE}\u{04B1}])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -1328,7 +1328,7 @@ pub mod processor {
     }
 
     pub fn korean(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\u{AC00}-\u{D7A3}\u{4E00}-\u{9FAF}\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\u{AC00}-\u{D7A3}\u{4E00}-\u{9FAF}\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[a-zA-Z\u{AC00}-\u{D7A3}\u{4E00}-\u{9FAF}])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[a-zA-Z\u{AC00}-\u{D7A3}\u{4E00}-\u{9FAF}])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[a-zA-Z\u{AC00}-\u{D7A3}\u{4E00}-\u{9FAF}])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -1358,7 +1358,7 @@ pub mod processor {
     }
 
     pub fn latin(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[A-Za-z])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[A-Za-z])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[A-Za-z])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -1388,7 +1388,7 @@ pub mod processor {
     }
 
     pub fn latvian(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZĀČĒĢĪĶĻŅŌŖŠŪŽāčēģīķļņōŗšūž\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZĀČĒĢĪĶĻŅŌŖŠŪŽāčēģīķļņōŗšūž\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[A-Za-zĀČĒĢĪĶĻŅŌŖŠŪŽāčēģīķļņōŗšūž])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[A-Za-zĀČĒĢĪĶĻŅŌŖŠŪŽāčēģīķļņōŗšūž])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[A-Za-zĀČĒĢĪĶĻŅŌŖŠŪŽāčēģīķļņōŗšūž])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -1418,7 +1418,7 @@ pub mod processor {
     }
 
     pub fn lithuanian(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZĄČĘĖĮŠŲŪŽąčęėįšųūž\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZĄČĘĖĮŠŲŪŽąčęėįšųūž\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[A-Za-zĄČĘĖĮŠŲŪŽąčęėįšųūž])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[A-Za-zĄČĘĖĮŠŲŪŽąčęėįšųūž])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[A-Za-zĄČĘĖĮŠŲŪŽąčęėįšųūž])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -1448,7 +1448,7 @@ pub mod processor {
     }
 
     pub fn macedonian(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\u{0410}-\u{042F}\u{0430}-\u{044F}\u{0405}\u{0455}\u{0408}\u{0458}\u{0409}\u{0459}\u{040A}\u{045A}\u{040C}\u{045C}\u{040F}\u{045F}\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\u{0410}-\u{042F}\u{0430}-\u{044F}\u{0405}\u{0455}\u{0408}\u{0458}\u{0409}\u{0459}\u{040A}\u{045A}\u{040C}\u{045C}\u{040F}\u{045F}\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[a-zA-Z\u{0410}-\u{042F}\u{0430}-\u{044F}\u{0405}\u{0455}\u{0408}\u{0458}\u{0409}\u{0459}\u{040A}\u{045A}\u{040C}\u{045C}\u{040F}\u{045F}])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[a-zA-Z\u{0410}-\u{042F}\u{0430}-\u{044F}\u{0405}\u{0455}\u{0408}\u{0458}\u{0409}\u{0459}\u{040A}\u{045A}\u{040C}\u{045C}\u{040F}\u{045F}])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[a-zA-Z\u{0410}-\u{042F}\u{0430}-\u{044F}\u{0405}\u{0455}\u{0408}\u{0458}\u{0409}\u{0459}\u{040A}\u{045A}\u{040C}\u{045C}\u{040F}\u{045F}])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -1479,7 +1479,7 @@ pub mod processor {
 
     // basically same as indonesian
     pub fn malay(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZÁáÉéÍíÓóÚúŃńÇçĐđ\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZÁáÉéÍíÓóÚúŃńÇçĐđ\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[A-Za-zÁáÉéÍíÓóÚúŃńÇçĐđ])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[A-Za-zÁáÉéÍíÓóÚúŃńÇçĐđ])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[A-Za-zÁáÉéÍíÓóÚúŃńÇçĐđ])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -1509,7 +1509,7 @@ pub mod processor {
     }
 
     pub fn maori(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZĀāĒēĪīŌōŪū\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZĀāĒēĪīŌōŪū\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[A-Za-zĀāĒēĪīŌōŪū])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[A-Za-zĀāĒēĪīŌōŪū])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[A-Za-zĀāĒēĪīŌōŪū])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -1539,7 +1539,7 @@ pub mod processor {
     }
 
     pub fn marathi(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\u{0900}-\u{097F}\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\u{0900}-\u{097F}\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[A-Za-z\u{0900}-\u{097F}])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[A-Za-z\u{0900}-\u{097F}])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[A-Za-z\u{0900}-\u{097F}])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -1569,7 +1569,7 @@ pub mod processor {
     }
 
     pub fn mongolian(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\u{0410}-\u{042F}\u{0430}-\u{044F}\u{04E8}\u{04E9}\u{04AE}\u{04AF}\u{1800}-\u{18AF}\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\u{0410}-\u{042F}\u{0430}-\u{044F}\u{04E8}\u{04E9}\u{04AE}\u{04AF}\u{1800}-\u{18AF}\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[a-zA-Z\u{0410}-\u{042F}\u{0430}-\u{044F}\u{04E8}\u{04E9}\u{04AE}\u{04AF}\u{1800}-\u{18AF}])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[a-zA-Z\u{0410}-\u{042F}\u{0430}-\u{044F}\u{04E8}\u{04E9}\u{04AE}\u{04AF}\u{1800}-\u{18AF}])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[a-zA-Z\u{0410}-\u{042F}\u{0430}-\u{044F}\u{04E8}\u{04E9}\u{04AE}\u{04AF}\u{1800}-\u{18AF}])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -1599,7 +1599,7 @@ pub mod processor {
     }
 
     pub fn norwegian(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}A-Za-zÆØÅæøå\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}A-Za-zÆØÅæøå\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[A-Za-zÆØÅæøå])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[A-Za-zÆØÅæøå])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[A-Za-zÆØÅæøå])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -1629,7 +1629,7 @@ pub mod processor {
     }
 
     pub fn persian(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\u{0600}-\u{06FF}\u{0686}\u{06AF}\u{06A9}\u{0698}\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\u{0600}-\u{06FF}\u{0686}\u{06AF}\u{06A9}\u{0698}\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[a-zA-Z\u{0600}-\u{06FF}\u{0686}\u{06AF}\u{06A9}\u{0698}])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[a-zA-Z\u{0600}-\u{06FF}\u{0686}\u{06AF}\u{06A9}\u{0698}])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[a-zA-Z\u{0600}-\u{06FF}\u{0686}\u{06AF}\u{06A9}\u{0698}])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -1659,7 +1659,7 @@ pub mod processor {
     }
 
     pub fn polish(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}A-Za-zĄĆĘŁŃÓŚŹŻąćęłńóśźż\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}A-Za-zĄĆĘŁŃÓŚŹŻąćęłńóśźż\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[A-Za-zĄĆĘŁŃÓŚŹŻąćęłńóśźż])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[A-Za-zĄĆĘŁŃÓŚŹŻąćęłńóśźż])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[A-Za-zĄĆĘŁŃÓŚŹŻąćęłńóśźż])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -1689,7 +1689,7 @@ pub mod processor {
     }
 
     pub fn portuguese(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}A-Za-zÀÁÂÃÄÇÉÊËÍÎÏÓÔÕÖÚÛÜàáâãäçéêëíîïóôõöúûü\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}A-Za-zÀÁÂÃÄÇÉÊËÍÎÏÓÔÕÖÚÛÜàáâãäçéêëíîïóôõöúûü\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[A-Za-zÀÁÂÃÄÇÉÊËÍÎÏÓÔÕÖÚÛÜàáâãäçéêëíîïóôõöúûü])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[A-Za-zÀÁÂÃÄÇÉÊËÍÎÏÓÔÕÖÚÛÜàáâãäçéêëíîïóôõöúûü])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[A-Za-zÀÁÂÃÄÇÉÊËÍÎÏÓÔÕÖÚÛÜàáâãäçéêëíîïóôõöúûü])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -1719,7 +1719,7 @@ pub mod processor {
     }
 
     pub fn punjabi_eastern(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\u{0900}-\u{097F}\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\u{0900}-\u{097F}\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[A-Za-z\u{0900}-\u{097F}])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[A-Za-z\u{0900}-\u{097F}])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[A-Za-z\u{0900}-\u{097F}])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -1749,7 +1749,7 @@ pub mod processor {
     }
 
     pub fn punjabi_western(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\u{0600}-\u{06D4}\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\u{0600}-\u{06D4}\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[a-zA-Z\u{0600}-\u{06D4}])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[a-zA-Z\u{0600}-\u{06D4}])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[a-zA-Z\u{0600}-\u{06D4}])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -1779,7 +1779,7 @@ pub mod processor {
     }
 
     pub fn romanian(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}A-Za-zĂÂÎȘȚăâîșț\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}A-Za-zĂÂÎȘȚăâîșț\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[A-Za-zĂÂÎȘȚăâîșț])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[A-Za-zĂÂÎȘȚăâîșț])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[A-Za-zĂÂÎȘȚăâîșț])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -1809,7 +1809,7 @@ pub mod processor {
     }
 
     pub fn russian(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\u{0410}-\u{042F}\u{0430}-\u{044F}\u{0401}\u{0451}\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\u{0410}-\u{042F}\u{0430}-\u{044F}\u{0401}\u{0451}\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[a-zA-Z\u{0410}-\u{042F}\u{0430}-\u{044F}\u{0401}\u{0451}])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[a-zA-Z\u{0410}-\u{042F}\u{0430}-\u{044F}\u{0401}\u{0451}])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[a-zA-Z\u{0410}-\u{042F}\u{0430}-\u{044F}\u{0401}\u{0451}])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -1839,7 +1839,7 @@ pub mod processor {
     }
 
     pub fn serbian(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZščćđžŠČĆĐŽ\u{0400}-\u{04FF}\u{0459}\u{0409}\u{045A}\u{040A}\u{045B}\u{040B}\u{0452}\u{0402}\u{0436}\u{0406}\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZščćđžŠČĆĐŽ\u{0400}-\u{04FF}\u{0459}\u{0409}\u{045A}\u{040A}\u{045B}\u{040B}\u{0452}\u{0402}\u{0436}\u{0406}\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[A-Za-zščćđžŠČĆĐŽ\u{0400}-\u{04FF}\u{0459}\u{0409}\u{045A}\u{040A}\u{045B}\u{040B}\u{0452}\u{0402}\u{0436}\u{0406}])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[A-Za-zščćđžŠČĆĐŽ\u{0400}-\u{04FF}\u{0459}\u{0409}\u{045A}\u{040A}\u{045B}\u{040B}\u{0452}\u{0402}\u{0436}\u{0406}])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[A-Za-zščćđžŠČĆĐŽ\u{0400}-\u{04FF}\u{0459}\u{0409}\u{045A}\u{040A}\u{045B}\u{040B}\u{0452}\u{0402}\u{0436}\u{0406}])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -1869,7 +1869,7 @@ pub mod processor {
     }
 
     pub fn shona(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZáÁâÂàÀéÉèÈíÍìÌóÓòÒúÚùÙñÑ\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZáÁâÂàÀéÉèÈíÍìÌóÓòÒúÚùÙñÑ\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[A-Za-záÁâÂàÀéÉèÈíÍìÌóÓòÒúÚùÙñÑ])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[A-Za-záÁâÂàÀéÉèÈíÍìÌóÓòÒúÚùÙñÑ])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[A-Za-záÁâÂàÀéÉèÈíÍìÌóÓòÒúÚùÙñÑ])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -1899,7 +1899,7 @@ pub mod processor {
     }
 
     pub fn slovak(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}A-Za-zÁÄČĎÉĽÍŇÓÔÚÝáäčďéľíňóôúý\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}A-Za-zÁÄČĎÉĽÍŇÓÔÚÝáäčďéľíňóôúý\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[A-Za-zÁÄČĎÉĽÍŇÓÔÚÝáäčďéľíňóôúý])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[A-Za-zÁÄČĎÉĽÍŇÓÔÚÝáäčďéľíňóôúý])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[A-Za-zÁÄČĎÉĽÍŇÓÔÚÝáäčďéľíňóôúý])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -1929,7 +1929,7 @@ pub mod processor {
     }
 
     pub fn slovenian(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}A-Za-zČŠŽčšž\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}A-Za-zČŠŽčšž\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[A-Za-zČŠŽčšž])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[A-Za-zČŠŽčšž])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[A-Za-zČŠŽčšž])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -1959,7 +1959,7 @@ pub mod processor {
     }
 
     pub fn somali(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZÀàÁáÂâÆæÈèÉéÊêËëÍíÎîÒòÓóÔôÙùÚúÛû\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZÀàÁáÂâÆæÈèÉéÊêËëÍíÎîÒòÓóÔôÙùÚúÛû\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[A-Za-zÀàÁáÂâÆæÈèÉéÊêËëÍíÎîÒòÓóÔôÙùÚúÛû])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[A-Za-zÀàÁáÂâÆæÈèÉéÊêËëÍíÎîÒòÓóÔôÙùÚúÛû])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[A-Za-zÀàÁáÂâÆæÈèÉéÊêËëÍíÎîÒòÓóÔôÙùÚúÛû])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -1989,7 +1989,7 @@ pub mod processor {
     }
 
     pub fn sotho(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZÀàÁáÈèÉéÊêÍíÒòÓóÔôÙùÚú\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZÀàÁáÈèÉéÊêÍíÒòÓóÔôÙùÚú\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[A-Za-zÀàÁáÈèÉéÊêÍíÒòÓóÔôÙùÚú])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[A-Za-zÀàÁáÈèÉéÊêÍíÒòÓóÔôÙùÚú])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[A-Za-zÀàÁáÈèÉéÊêÍíÒòÓóÔôÙùÚú])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -2019,7 +2019,7 @@ pub mod processor {
     }
 
     pub fn spanish(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}A-Za-zÁÉÍÓÚÑáéíóúñ\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}A-Za-zÁÉÍÓÚÑáéíóúñ\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[A-Za-zÁÉÍÓÚÑáéíóúñ])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[A-Za-zÁÉÍÓÚÑáéíóúñ])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[A-Za-zÁÉÍÓÚÑáéíóúñ])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -2049,7 +2049,7 @@ pub mod processor {
     }
 
     pub fn swahili(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[A-Za-z])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[A-Za-z])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[A-Za-z])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -2079,7 +2079,7 @@ pub mod processor {
     }
 
     pub fn swedish(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}A-Za-zÅÄÖåäö\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}A-Za-zÅÄÖåäö\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[A-Za-zÅÄÖåäö])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[A-Za-zÅÄÖåäö])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[A-Za-zÅÄÖåäö])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -2109,7 +2109,7 @@ pub mod processor {
     }
 
     pub fn tagalog(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[A-Za-z])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[A-Za-z])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[A-Za-z])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -2139,7 +2139,7 @@ pub mod processor {
     }
 
     pub fn tamil(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}A-Za-z\u{0B80}-\u{0BFF}\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}A-Za-z\u{0B80}-\u{0BFF}\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[A-Za-z\u{0B80}-\u{0BFF}])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[A-Za-z\u{0B80}-\u{0BFF}])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[A-Za-z\u{0B80}-\u{0BFF}])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -2169,7 +2169,7 @@ pub mod processor {
     }
 
     pub fn telugu(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}A-Za-z\u{0C00}-\u{0C7F}\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}A-Za-z\u{0C00}-\u{0C7F}\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[A-Za-z\u{0C00}-\u{0C7F}])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[A-Za-z\u{0C00}-\u{0C7F}])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[A-Za-z\u{0C00}-\u{0C7F}])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -2199,7 +2199,7 @@ pub mod processor {
     }
 
     pub fn tsonga(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[A-Za-z])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[A-Za-z])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[A-Za-z])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -2229,7 +2229,7 @@ pub mod processor {
     }
 
     pub fn tswana(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[A-Za-z])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[A-Za-z])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[A-Za-z])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -2259,7 +2259,7 @@ pub mod processor {
     }
 
     pub fn turkish(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}A-Za-zĞğİıÇçŞşÖöÜü\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}A-Za-zĞğİıÇçŞşÖöÜü\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[A-Za-zĞğİıÇçŞşÖöÜü])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[A-Za-zĞğİıÇçŞşÖöÜü])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[A-Za-zĞğİıÇçŞşÖöÜü])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -2289,7 +2289,7 @@ pub mod processor {
     }
 
     pub fn ukrainian(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\u{0410}-\u{042F}\u{0430}-\u{044F}\u{0404}\u{0454}\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\u{0410}-\u{042F}\u{0430}-\u{044F}\u{0404}\u{0454}\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[a-zA-Z\u{0410}-\u{042F}\u{0430}-\u{044F}\u{0404}\u{0454}])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[a-zA-Z\u{0410}-\u{042F}\u{0430}-\u{044F}\u{0404}\u{0454}])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[a-zA-Z\u{0410}-\u{042F}\u{0430}-\u{044F}\u{0404}\u{0454}])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -2319,7 +2319,7 @@ pub mod processor {
     }
 
     pub fn urdu(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\u{0600}-\u{06FF}\u{067E}\u{067F}\u{0686}\u{0691}\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\u{0600}-\u{06FF}\u{067E}\u{067F}\u{0686}\u{0691}\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[a-zA-Z\u{0600}-\u{06FF}\u{067E}\u{067F}\u{0686}\u{0691}])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[a-zA-Z\u{0600}-\u{06FF}\u{067E}\u{067F}\u{0686}\u{0691}])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[a-zA-Z\u{0600}-\u{06FF}\u{067E}\u{067F}\u{0686}\u{0691}])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -2349,7 +2349,7 @@ pub mod processor {
     }
 
     pub fn vietnamese(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠƯàáâãèéêìíòóôõùúăđĩũơưỲÝỴỶỸỳýỵỷỹ\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠƯàáâãèéêìíòóôõùúăđĩũơưỲÝỴỶỸỳýỵỷỹ\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠƯàáâãèéêìíòóôõùúăđĩũơưỲÝỴỶỸỳýỵỷỹ])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠƯàáâãèéêìíòóôõùúăđĩũơưỲÝỴỶỸỳýỵỷỹ])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠƯàáâãèéêìíòóôõùúăđĩũơưỲÝỴỶỸỳýỵỷỹ])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -2379,7 +2379,7 @@ pub mod processor {
     }
 
     pub fn welsh(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[A-Za-z])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[A-Za-z])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[A-Za-z])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -2409,7 +2409,7 @@ pub mod processor {
     }
 
     pub fn xhosa(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[A-Za-z])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[A-Za-z])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[A-Za-z])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -2439,7 +2439,7 @@ pub mod processor {
     }
 
     pub fn yoruba(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZẸỌṢẹọṣ\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-ZẸỌṢẹọṣ\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[A-Za-zẸỌṢẹọṣ])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[A-Za-zẸỌṢẹọṣ])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[A-Za-zẸỌṢẹọṣ])(\.\s){3}\.(\z|$|\n)").unwrap();
@@ -2469,7 +2469,7 @@ pub mod processor {
     }
 
     pub fn zulu(text: &str) -> Vec<String> {
-        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\s\?!:.،。、\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
+        let alphabet_regex = Regex::new(r"[^0-9\u{0660}-\u{0669}a-zA-Z\s\?!:.،。、\u{00BF}\u{00A1}\u{1362}\u{1367}\u{0589}\u{055D}\u{055C}\u{055E}\u{061F}\u{0964}\\「\\」\\)\\(\\[\\]\\-_]").unwrap();
         let three_consecutive_rule = Regex::new(r"\.\.\.(?=\s+[A-Za-z])").unwrap();
         let four_consecutive_rule = Regex::new(r"(?<=\S)\.{3}(?=\.\s[A-Za-z])").unwrap();
         let four_space_rule = Regex::new(r"(?<=[A-Za-z])(\.\s){3}\.(\z|$|\n)").unwrap();
