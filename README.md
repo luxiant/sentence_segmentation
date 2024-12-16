@@ -4,7 +4,7 @@ This is a regex rule-based sentence segmenter written in pure rust. This crate i
 
 ## Features
 
-- **Multilingual Support**: The crate supports sentence segmentation for 76 languages (see list below).
+- **Multilingual Support**: The crate supports sentence segmentation for 87 languages (see list below).
 ```
 processor::amharic
 processor::afrikaans
@@ -17,6 +17,7 @@ processor::belarusian
 processor::bengali
 processor::bosnian
 processor::bulgarian
+processor::burmese
 processor::catalan
 processor::chinese
 processor::croatian
@@ -38,12 +39,17 @@ processor::hebrew
 processor::hindi
 processor::hungarian
 processor::icelandic
+processor::igbo
 processor::indonesian
 processor::irish
 processor::italian
 processor::japanese
 processor::kazakh
+processor::khmer
 processor::korean
+processor::kurdish
+processor::kyrgyz
+processor::lao
 processor::latin
 processor::latvian
 processor::lithuanian
@@ -52,7 +58,9 @@ processor::malay
 processor::maori
 processor::marathi
 processor::mongolian
+processor::nepali
 processor::norwegian
+processor::pashto
 processor::persian
 processor::polish
 processor::portuguese
@@ -60,8 +68,10 @@ processor::punjabi_eastern
 processor::punjabi_western
 processor::romanian
 processor::russian
+processor::scottish
 processor::serbian
 processor::shona
+processor::sinhala
 processor::slovak
 processor::slovenian
 processor::somali
@@ -77,6 +87,7 @@ processor::tswana
 processor::turkish
 processor::ukrainian
 processor::urdu
+processor::uzbek
 processor::vietnamese
 processor::welsh
 processor::xhosa
