@@ -103,7 +103,7 @@ To use this crate, add it to your `Cargo.toml` dependencies:
 
 ```
 [dependencies]
-sentence_segmentation = "1.0.3"
+sentence_segmentation = "1.1.0"
 ```
 
 ## Usage
