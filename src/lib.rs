@@ -267,6 +267,15 @@ pub mod processor {
             }
         }
 
+	for (k, v) in abbreviations {
+	    unsafe{
+		let ptr_k = k as *const _;
+		let ptr_v = v as *const _;
+		core::ptr::drop_in_place(&ptr_k as *const _ as *mut Box<[&str; 3]>);
+		core::ptr::drop_in_place(&ptr_v as *const _ as *mut Box<[&str; 3]>);		    
+	    }
+	}
+	
         final_segmented_sentences
     }
 
