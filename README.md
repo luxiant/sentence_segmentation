@@ -4,8 +4,10 @@ This is a regex rule-based sentence segmenter written in pure rust. This crate i
 
 ## Features
 
-- **Multilingual Support**: The crate supports sentence segmentation for 115 languages (see list below).
+- **Multilingual Support**: The crate supports sentence segmentation for 147 languages (see list below).
 ```
+processor::abazanian
+processor::abkhazian
 processor::afrikaans
 processor::albanian
 processor::amharic
@@ -14,35 +16,48 @@ processor::armenian
 processor::assamese
 processor::azerbaijani
 processor::balinese
+processor::balochi
+processor::bambara
 processor::basque
+processor::beja
 processor::belarusian
 processor::bengali
+processor::brahui
+processor::bhojpuri
 processor::bosnian
 processor::bulgarian
 processor::burmese
+processor::buryat
 processor::catalan
 processor::cebuano
 processor::chechen
 processor::chinese
+processor::corsican
 processor::creole
 processor::croatian
 processor::czech
 processor::danish
+processor::dargwa
 processor::dinka
 processor::dutch
 processor::english
+processor::erzya
 processor::esperanto
 processor::estonian
 processor::finnish
 processor::french
+processor::frisian
 processor::galician
 processor::ganda
+processor::gedeo
 processor::georgian
 processor::german
 processor::greek
+processor::guarani
 processor::gujarati
 processor::hausa
 processor::hebrew
+processor::hiligaynon
 processor::hindi
 processor::hungarian
 processor::icelandic
@@ -54,36 +69,46 @@ processor::irish
 processor::italian
 processor::japanese
 processor::javanese
+processor::kabyle
+processor::kangri
 processor::kannada
 processor::kashmiri
 processor::kazakh
 processor::khmer
+processor::khoekhoe
+processor::kiga
 processor::korean
 processor::kurdish
 processor::kyrgyz
 processor::lao
 processor::latin
+processor::latgalian
 processor::latvian
 processor::lithuanian
 processor::macedonian
+processor::magahi
 processor::malagasy
 processor::malay
 processor::malayalam
 processor::maltese
+processor::mandeali
 processor::manipuri
 processor::maori
 processor::marathi
 processor::mongolian
 processor::nepali
+processor::nkore
 processor::norwegian
 processor::oriya
 processor::ossetian
+processor::papiamento
 processor::pashto
 processor::persian
 processor::polish
 processor::portuguese
 processor::punjabi_eastern
 processor::punjabi_western
+processor::quechuan
 processor::romanian
 processor::russian
 processor::sanskrit
@@ -105,7 +130,10 @@ processor::tagalog
 processor::tamil
 processor::tatar
 processor::telugu
+processor::tetum
+processor::thai // See below
 processor::tibetan
+processor::tigrinya
 processor::tsonga
 processor::tswana
 processor::turkish
@@ -117,9 +145,12 @@ processor::uzbek
 processor::vietnamese
 processor::volapuk
 processor::welsh
+processor::wolof
 processor::xhosa
+processor::yakut
 processor::yiddish
 processor::yoruba
+processor::zaza
 processor::zulu
 ```
 - **Modular Segmentation**: Each language has a dedicated segmentation function, making it simple to use language-specific rules.
@@ -131,7 +162,7 @@ To use this crate, add it to your `Cargo.toml` dependencies:
 
 ```
 [dependencies]
-sentence_segmentation = "1.2.0"
+sentence_segmentation = "1.3.0"
 ```
 
 ## Usage
@@ -151,6 +182,15 @@ fn main() {
     // 이 크레이트는 기본적인 전처리도 같이 수행하므로 문장 분리가 목적이 아니더라도 전처리를 위해서 사용할 수도 있습니다.
 
 }
+```
+
+## For Thai Users
+
+Thai usually does not use punctuations to end sentences, so I applied a simple cnn model to separate sentences, in order not to unnecessarily install the related crates such as burn, thai sentence segmenting function is in separate flag. You can activate the function by specifying feature in cargo.toml,
+
+```
+[dependencies]
+sentence_segmentation = {version = "1.3.0", features = ["thai"]}
 ```
 
 ## License

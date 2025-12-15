@@ -1,5 +1,118 @@
 const ABBREVIATION_MAP_JSON: &str = include_str!("abbreviation_map.json");
 
+#[cfg(feature = "thai")]
+mod model {
+    include!(concat!(env!("OUT_DIR"), "/model/thai_segmenter.rs"));
+}
+
+#[cfg(feature = "thai")]
+mod thai_processor {
+    use super::model;
+    use burn::tensor::{Tensor, TensorData, Int};
+    use burn::backend::NdArray;
+
+    const WINDOW_SIZE: usize = 30; 
+    const INPUT_LEN: usize = WINDOW_SIZE * 2;
+
+    type Backend = NdArray<f32>;
+
+    pub struct ThaiSegmenter {
+        model: model::Model<Backend>,
+        device: <Backend as burn::tensor::backend::Backend>::Device,
+    }
+
+    impl ThaiSegmenter {
+        pub fn new() -> Self {
+            let device = Default::default();
+            let model = model::Model::default();
+            Self { model, device }
+        }
+
+        fn encode_char(c: char) -> i32 {
+            let code = c as u32;
+            match code {
+                0x0E00..=0x0E7F => (code - 0x0E00 + 4) as i32,
+                0x0020..=0x007E => (code - 0x0020 + 132) as i32,
+                _ => 1,
+            }
+        }
+
+        pub fn segment(&self, text: &str) -> Vec<String> {
+            let chars: Vec<char> = text.chars().collect();
+            
+            let space_indices: Vec<usize> = chars.iter().enumerate()
+            .filter_map(|(i, &c)| if c == ' ' { Some(i) } else { None })
+            .collect();
+
+            if space_indices.is_empty() {
+                return vec![text.to_string()];
+            }
+
+            let num_spaces = space_indices.len();
+
+            let mut flattened_input = Vec::with_capacity(num_spaces * INPUT_LEN);
+            
+            let encoded_text: Vec<i32> = chars.iter().map(|&c| Self::encode_char(c)).collect();
+            let text_len = encoded_text.len();
+            for &space_idx in &space_indices {
+                let left_start = space_idx as isize - WINDOW_SIZE as isize;
+                let padding_count = if left_start < 0 { left_start.abs() as usize } else { 0 };
+                
+                for _ in 0..padding_count {
+                    flattened_input.push(0);
+                }
+                
+                let start_idx = if left_start < 0 { 0 } else { left_start as usize };
+                for i in start_idx..space_idx {
+                    flattened_input.push(encoded_text[i]);
+                }
+
+                let right_start = space_idx + 1;
+                let right_end = right_start + WINDOW_SIZE;
+                
+                let copy_end = std::cmp::min(right_end, text_len);
+                for i in right_start..copy_end {
+                    flattened_input.push(encoded_text[i]);
+                }
+                
+                let remaining = right_end as isize - copy_end as isize;
+                if remaining > 0 {
+                    for _ in 0..remaining {
+                        flattened_input.push(0);
+                    }
+                }
+            }
+
+            let input_shape = [num_spaces, INPUT_LEN];
+            let input_data = TensorData::new(flattened_input, input_shape);
+            let input_tensor: Tensor<Backend, 2, Int> = Tensor::from_data(input_data, &self.device);
+
+            let output = self.model.forward(input_tensor);
+
+            let output_probs: Vec<f32> = output.into_data().to_vec().unwrap();
+
+            let mut sentences = Vec::new();
+            let mut last_offset = 0;
+
+            for (i, &space_idx) in space_indices.iter().enumerate() {
+                let prob = output_probs[i];
+                if prob > 0.5 {
+                    let segment: String = chars[last_offset..space_idx].iter().collect();
+                    sentences.push(segment);
+                    last_offset = space_idx + 1;
+                }
+            }
+
+            if last_offset < chars.len() {
+                let segment: String = chars[last_offset..].iter().collect();
+                sentences.push(segment);
+            }
+
+            sentences
+        }
+    }
+}
+
 pub mod processor {
     use super::*;
     // use std::fs;
@@ -28,11 +141,11 @@ pub mod processor {
         let carriage_return_rule = Regex::new(r"\r").unwrap();
         filtered_string = carriage_return_rule.replace_all(&filtered_string, " ").to_string();
 
-        let all_punctuations = "¿¡、，\u{0021}\u{002E}\u{003F}\u{0589}\u{061F}\u{06D4}\u{0700}\u{0701}\u{0702}\u{07F9}\u{0964}\u{0965}\u{104A}\u{104B}\u{1362}\u{1367}\u{1368}\u{166E}\u{1803}\u{1809}\u{1944}\u{1945}\u{1AA8}\u{1AA9}\u{1AAA}\u{1AAB}\u{1B5A}\u{1B5B}\u{1B5E}\u{1B5F}\u{1C3B}\u{1C3C}\u{1C7E}\u{1C7F}\u{203C}\u{203D}\u{2047}\u{2048}\u{2049}\u{2E2E}\u{3002}\u{A4FF}\u{A60E}\u{A60F}\u{A6F3}\u{A6F7}\u{A876}\u{A877}\u{A8CE}\u{A8CF}\u{A92F}\u{A9C8}\u{A9C9}\u{AA5D}\u{AA5E}\u{AA5F}\u{AAF0}\u{AAF1}\u{ABEB}\u{FE52}\u{FE56}\u{FE57}\u{FF01}\u{FF0E}\u{FF1F}\u{FF61}\u{11047}\u{11048}\u{110BE}\u{110BF}\u{110C0}\u{110C1}\u{11141}\u{11142}\u{11143}\u{111C5}\u{111C6}".to_string();
+        let all_punctuations = "¿¡、，\u{0021}\u{002E}\u{003F}\u{0589}\u{061F}\u{06D4}\u{0700}\u{0701}\u{0702}\u{07F9}\u{0964}\u{0965}\u{104A}\u{104B}\u{1362}\u{1367}\u{1368}\u{166E}\u{1803}\u{1809}\u{1944}\u{1945}\u{1AA8}\u{1AA9}\u{1AAA}\u{1AAB}\u{1B5A}\u{1B5B}\u{1B5E}\u{1B5F}\u{1C3B}\u{1C3C}\u{1C7E}\u{1C7F}\u{203C}\u{203D}\u{2047}\u{2048}\u{2049}\u{2E2E}\u{3002}\u{A4FF}\u{A60E}\u{A60F}\u{A6F3}\u{A6F7}\u{A876}\u{A877}\u{A8CE}\u{A8CF}\u{A92F}\u{A9C8}\u{A9C9}\u{AA5D}\u{AA5E}\u{AA5F}\u{AAF0}\u{AAF1}\u{ABEB}\u{FE52}\u{FE56}\u{FE57}\u{FF01}\u{FF0E}\u{FF1F}\u{FF61}\u{11047}\u{11048}\u{110BE}\u{110BF}\u{110C0}\u{110C1}\u{11141}\u{11142}\u{11143}\u{111C5}\u{111C6}\u{07F9}\u{07F7}".to_string();
 
         // step 2 : eliminate non-alphabet
         let alphabet_regex_pattern = format!(
-            r"[^0-9\u{{A9D0}}-\u{{A9D9}}\u{{17E0}}-\u{{17E9}}\u{{1040}}-\u{{1049}}\u{{0660}}-\u{{0669}}{}\s\{}\\「\\」\\)\\(\\[\\]\\-_]",
+            r"[^0-9\u{{10D40}}-\u{{10D8F}}\u{{116C0}}-\u{{116C9}}\u{{07C0}}-\u{{07FF}}\u{{A9D0}}-\u{{A9D9}}\u{{17E0}}-\u{{17E9}}\u{{1040}}-\u{{1049}}\u{{0660}}-\u{{0669}}{}\s\{}\\「\\」\\)\\(\\[\\]\\-_]",
             config.alphabets.clone(),
             all_punctuations.clone()
         );
@@ -267,16 +380,42 @@ pub mod processor {
             }
         }
 
-	for (k, v) in abbreviations {
-	    unsafe{
-		let ptr_k = k as *const _;
-		let ptr_v = v as *const _;
-		core::ptr::drop_in_place(&ptr_k as *const _ as *mut Box<[&str; 3]>);
-		core::ptr::drop_in_place(&ptr_v as *const _ as *mut Box<[&str; 3]>);		    
-	    }
-	}
+        for (k, v) in abbreviations {
+            unsafe{
+                let ptr_k = k as *const _;
+                let ptr_v = v as *const _;
+                core::ptr::drop_in_place(&ptr_k as *const _ as *mut Box<[&str; 3]>);
+                core::ptr::drop_in_place(&ptr_v as *const _ as *mut Box<[&str; 3]>);
+            }
+        }
 	
         final_segmented_sentences
+    }
+
+    pub fn abazanian(text: &str) -> Vec<String> {
+        let config = LanguageConfig {
+            alphabets: "a-zA-Z\u{0400}-\u{04FF}\u{0500}-\u{052F}\u{2DE0}-\u{2DFF}\u{A640}-\u{A69F}\u{1C80}-\u{1C8F}\u{1E030}-\u{1E08F}\u{1D2B}\u{1D78}\u{FE2E}\u{FE2F}".to_string(),
+            have_capital_letter: true,
+            period: ".".to_string(),
+            question_mark: "?".to_string(),
+            exclamation_mark: "!".to_string(),
+            other_punctuations: vec![],
+        };
+
+        process(text, config)
+    }
+
+    pub fn abkhazian(text: &str) -> Vec<String> {
+        let config = LanguageConfig {
+            alphabets: "a-zA-Z\u{0400}-\u{04FF}\u{0500}-\u{052F}\u{2DE0}-\u{2DFF}\u{A640}-\u{A69F}\u{1C80}-\u{1C8F}\u{1E030}-\u{1E08F}\u{1D2B}\u{1D78}\u{FE2E}\u{FE2F}".to_string(),
+            have_capital_letter: true,
+            period: ".".to_string(),
+            question_mark: "?".to_string(),
+            exclamation_mark: "!".to_string(),
+            other_punctuations: vec![],
+        };
+
+        process(text, config)
     }
 
     pub fn afrikaans(text: &str) -> Vec<String> {
@@ -383,6 +522,32 @@ pub mod processor {
         process(text, config)
     }
 
+    pub fn balochi(text: &str) -> Vec<String> {
+        let config = LanguageConfig {
+            alphabets: "a-zA-Z\u{0600}-\u{06FF}\u{08A0}-\u{08FF}\u{0870}-\u{089F}\u{FB50}-\u{FDFF}".to_string(),
+            have_capital_letter: false,
+            period: ".".to_string(),
+            question_mark: "\u{061F}".to_string(),
+            exclamation_mark: "!".to_string(),
+            other_punctuations: vec!["\u{06D4}".to_string()],
+        };
+
+        process(text, config)
+    }
+
+    pub fn bambara(text: &str) -> Vec<String> {
+        let config = LanguageConfig {
+            alphabets: "a-zA-Z\u{0100}-\u{017F}\u{0180}-\u{024F}\u{0250}-\u{02AF}\u{0600}-\u{06FF}\u{08A0}-\u{08FF}\u{0870}-\u{089F}\u{FB50}-\u{FDFF}\u{07C0}-\u{07FF}".to_string(),
+            have_capital_letter: false,
+            period: ".".to_string(),
+            question_mark: "\u{061F}".to_string(),
+            exclamation_mark: "\u{07F9}".to_string(),
+            other_punctuations: vec!["\u{06D4}".to_string(), "\u{07F7}".to_string()],
+        };
+
+        process(text, config)
+    }
+
     pub fn basque(text: &str) -> Vec<String> {
         let config = LanguageConfig {
             alphabets: "a-zA-ZÑÇñç".to_string(),
@@ -391,6 +556,19 @@ pub mod processor {
             question_mark: "?".to_string(),
             exclamation_mark: "!".to_string(),
             other_punctuations: vec![],
+        };
+
+        process(text, config)
+    }
+
+    pub fn beja(text: &str) -> Vec<String> {
+        let config = LanguageConfig {
+            alphabets: "a-zA-Z\u{0600}-\u{06FF}\u{08A0}-\u{08FF}\u{0870}-\u{089F}\u{FB50}-\u{FDFF}".to_string(),
+            have_capital_letter: false,
+            period: ".".to_string(),
+            question_mark: "\u{061F}".to_string(),
+            exclamation_mark: "!".to_string(),
+            other_punctuations: vec!["?".to_string(), "\u{06D4}".to_string()],
         };
 
         process(text, config)
@@ -412,6 +590,32 @@ pub mod processor {
     pub fn bengali(text: &str) -> Vec<String> {
         let config = LanguageConfig {
             alphabets: "a-zA-Z\u{0980}-\u{09FF}".to_string(),
+            have_capital_letter: false,
+            period: "\u{0964}".to_string(),
+            question_mark: "?".to_string(),
+            exclamation_mark: "!".to_string(),
+            other_punctuations: vec![".".to_string(), "\u{0965}".to_string()],
+        };
+
+        process(text, config)
+    }
+
+    pub fn brahui(text: &str) -> Vec<String> {
+        let config = LanguageConfig {
+            alphabets: "a-zA-Z\u{0600}-\u{06FF}\u{08A0}-\u{08FF}\u{0870}-\u{089F}\u{FB50}-\u{FDFF}".to_string(),
+            have_capital_letter: false,
+            period: ".".to_string(),
+            question_mark: "\u{061F}".to_string(),
+            exclamation_mark: "!".to_string(),
+            other_punctuations: vec!["\u{06D4}".to_string()],
+        };
+
+        process(text, config)
+    }
+
+    pub fn bhojpuri(text: &str) -> Vec<String> {
+        let config = LanguageConfig {
+            alphabets: "a-zA-Z\u{0900}-\u{097F}\u{A8E0}-\u{A8FF}\u{11B00}-\u{11B5F}\u{1CD0}-\u{1CFF}\u{11080}-\u{110CF}".to_string(),
             have_capital_letter: false,
             period: "\u{0964}".to_string(),
             question_mark: "?".to_string(),
@@ -456,6 +660,19 @@ pub mod processor {
             question_mark: "?".to_string(),
             exclamation_mark: "!".to_string(),
             other_punctuations: vec![".".to_string()],
+        };
+
+        process(text, config)
+    }
+
+    pub fn buryat(text: &str) -> Vec<String> {
+        let config = LanguageConfig {
+            alphabets: "a-zA-Z\u{0400}-\u{04FF}\u{0500}-\u{052F}\u{2DE0}-\u{2DFF}\u{A640}-\u{A69F}\u{1C80}-\u{1C8F}\u{1E030}-\u{1E08F}\u{1D2B}\u{1D78}\u{FE2E}\u{FE2F}".to_string(),
+            have_capital_letter: true,
+            period: ".".to_string(),
+            question_mark: "?".to_string(),
+            exclamation_mark: "!".to_string(),
+            other_punctuations: vec![],
         };
 
         process(text, config)
@@ -508,6 +725,19 @@ pub mod processor {
             question_mark: "？".to_string(),
             exclamation_mark: "！".to_string(),
             other_punctuations: vec!["!".to_string(), "?".to_string()],
+        };
+
+        process(text, config)
+    }
+
+    pub fn corsican(text: &str) -> Vec<String> {
+        let config = LanguageConfig {
+            alphabets: "a-zA-Z".to_string(),
+            have_capital_letter: true,
+            period: ".".to_string(),
+            question_mark: "?".to_string(),
+            exclamation_mark: "!".to_string(),
+            other_punctuations: vec![],
         };
 
         process(text, config)
@@ -566,6 +796,19 @@ pub mod processor {
         process(text, config)
     }
 
+    pub fn dargwa(text: &str) -> Vec<String> {
+        let config = LanguageConfig {
+            alphabets: "a-zA-Z\u{0400}-\u{04FF}\u{0500}-\u{052F}\u{2DE0}-\u{2DFF}\u{A640}-\u{A69F}\u{1C80}-\u{1C8F}\u{1E030}-\u{1E08F}\u{1D2B}\u{1D78}\u{FE2E}\u{FE2F}".to_string(),
+            have_capital_letter: true,
+            period: ".".to_string(),
+            question_mark: "?".to_string(),
+            exclamation_mark: "!".to_string(),
+            other_punctuations: vec![],
+        };
+
+        process(text, config)
+    }
+
     pub fn dinka(text: &str) -> Vec<String> {
         let config = LanguageConfig {
             alphabets: "a-zA-ZÄäËëƐ̈ɛ̈ƔɣÏïŊŋÖöƆɔƆ̈ɔ̈Üü".to_string(),
@@ -595,6 +838,19 @@ pub mod processor {
     pub fn english(text: &str) -> Vec<String> {
         let config = LanguageConfig {
             alphabets: "a-zA-Z".to_string(),
+            have_capital_letter: true,
+            period: ".".to_string(),
+            question_mark: "?".to_string(),
+            exclamation_mark: "!".to_string(),
+            other_punctuations: vec![],
+        };
+
+        process(text, config)
+    }
+
+    pub fn erzya(text: &str) -> Vec<String> {
+        let config = LanguageConfig {
+            alphabets: "a-zA-Z\u{0400}-\u{04FF}\u{0500}-\u{052F}\u{2DE0}-\u{2DFF}\u{A640}-\u{A69F}\u{1C80}-\u{1C8F}\u{1E030}-\u{1E08F}\u{1D2B}\u{1D78}\u{FE2E}\u{FE2F}".to_string(),
             have_capital_letter: true,
             period: ".".to_string(),
             question_mark: "?".to_string(),
@@ -657,6 +913,19 @@ pub mod processor {
         process(text, config)
     }
 
+    pub fn frisian(text: &str) -> Vec<String> {
+        let config = LanguageConfig {
+            alphabets: "a-zA-Z\u{00A0}-\u{00FF}\u{0100}-\u{017F}".to_string(),
+            have_capital_letter: true,
+            period: ".".to_string(),
+            question_mark: "?".to_string(),
+            exclamation_mark: "!".to_string(),
+            other_punctuations: vec![],
+        };
+
+        process(text, config)
+    }
+
     pub fn galician(text: &str) -> Vec<String> {
         let config = LanguageConfig {
             alphabets: "a-zA-ZÑñ".to_string(),
@@ -676,6 +945,19 @@ pub mod processor {
             have_capital_letter: true,
             period: ".".to_string(),
             question_mark: "?".to_string(),
+            exclamation_mark: "!".to_string(),
+            other_punctuations: vec![],
+        };
+
+        process(text, config)
+    }
+
+    pub fn gedeo(text: &str) -> Vec<String> {
+        let config = LanguageConfig {
+            alphabets: "a-zA-Z\u{1200}-\u{137F}".to_string(),
+            have_capital_letter: false,
+            period: "\u{1362}".to_string(),
+            question_mark: "\u{1367}".to_string(),
             exclamation_mark: "!".to_string(),
             other_punctuations: vec![],
         };
@@ -712,6 +994,19 @@ pub mod processor {
     pub fn greek(text: &str) -> Vec<String> {
         let config = LanguageConfig {
             alphabets: "a-zA-Z\u{0370}-\u{03FF}\u{1F00}-\u{1FFF}\u{1D00}-\u{1D7F}\u{1D80}-\u{1DBF}\u{2100}-\u{214F}".to_string(),
+            have_capital_letter: true,
+            period: ".".to_string(),
+            question_mark: "?".to_string(),
+            exclamation_mark: "!".to_string(),
+            other_punctuations: vec![],
+        };
+
+        process(text, config)
+    }
+
+    pub fn guarani(text: &str) -> Vec<String> {
+        let config = LanguageConfig {
+            alphabets: "a-zA-ZÃãẼẽG̃g̃ĨĩÑñÕõŨũỸỹ\u{02BC}".to_string(),
             have_capital_letter: true,
             period: ".".to_string(),
             question_mark: "?".to_string(),
@@ -761,6 +1056,19 @@ pub mod processor {
         process(text, config)
     }
 
+    pub fn hiligaynon(text: &str) -> Vec<String> {
+        let config = LanguageConfig {
+            alphabets: "a-zA-Z\u{0027}\u{00A0}-\u{00FF}\u{0100}-\u{017F}".to_string(),
+            have_capital_letter: true,
+            period: ".".to_string(),
+            question_mark: "?".to_string(),
+            exclamation_mark: "!".to_string(),
+            other_punctuations: vec![],
+        };
+
+        process(text, config)
+    }
+
     pub fn hindi(text: &str) -> Vec<String> {
         let config = LanguageConfig {
             alphabets: "a-zA-Z\u{0900}-\u{097F}\u{A8E0}-\u{A8FF}\u{11B00}-\u{11B5F}\u{1CD0}-\u{1CFF}".to_string(),
@@ -800,9 +1108,9 @@ pub mod processor {
         process(text, config)
     }
 
-    pub fn igbo(text: &str) -> Vec<String> {
+    pub fn ido(text: &str) -> Vec<String> {
         let config = LanguageConfig {
-            alphabets: "a-zA-ZỊṄỌỤịṅọụ".to_string(),
+            alphabets: "a-zA-Z".to_string(),
             have_capital_letter: true,
             period: ".".to_string(),
             question_mark: "?".to_string(),
@@ -813,9 +1121,9 @@ pub mod processor {
         process(text, config)
     }
 
-    pub fn ido(text: &str) -> Vec<String> {
+    pub fn igbo(text: &str) -> Vec<String> {
         let config = LanguageConfig {
-            alphabets: "a-zA-Z".to_string(),
+            alphabets: "a-zA-ZỊṄỌỤịṅọụ".to_string(),
             have_capital_letter: true,
             period: ".".to_string(),
             question_mark: "?".to_string(),
@@ -904,6 +1212,32 @@ pub mod processor {
         process(text, config)
     }
 
+    pub fn kabyle(text: &str) -> Vec<String> {
+        let config = LanguageConfig {
+            alphabets: "a-zA-Z\u{00A0}-\u{00FF}\u{0100}-\u{017F}\u{0180}-\u{024F}\u{0250}-\u{02AF}\u{0300}-\u{036F}\u{1E00}-\u{1EFF}\u{0600}-\u{06FF}\u{08A0}-\u{08FF}\u{0870}-\u{089F}\u{FB50}-\u{FDFF}\u{2D30}-\u{2D7F}".to_string(),
+            have_capital_letter: true,
+            period: ".".to_string(),
+            question_mark: "?".to_string(),
+            exclamation_mark: "!".to_string(),
+            other_punctuations: vec![],
+        };
+
+        process(text, config)
+    }
+
+    pub fn kangri(text: &str) -> Vec<String> {
+        let config = LanguageConfig {
+            alphabets: "a-zA-Z\u{0900}-\u{097F}\u{A8E0}-\u{A8FF}\u{11B00}-\u{11B5F}\u{1CD0}-\u{1CFF}\u{11680}-\u{116CF}".to_string(),
+            have_capital_letter: false,
+            period: "\u{0964}".to_string(),
+            question_mark: "?".to_string(),
+            exclamation_mark: "!".to_string(),
+            other_punctuations: vec![".".to_string(), "\u{0965}".to_string()],
+        };
+
+        process(text, config)
+    }
+
     pub fn kannada(text: &str) -> Vec<String> {
         let config = LanguageConfig {
             alphabets: "a-zA-Z\u{0C80}-\u{0CFF}".to_string(),
@@ -956,6 +1290,32 @@ pub mod processor {
         process(text, config)
     }
 
+    pub fn khoekhoe(text: &str) -> Vec<String> {
+        let config = LanguageConfig {
+            alphabets: "a-zA-Z".to_string(),
+            have_capital_letter: true,
+            period: ".".to_string(),
+            question_mark: "?".to_string(),
+            exclamation_mark: "!".to_string(),
+            other_punctuations: vec![],
+        };
+
+        process(text, config)
+    }
+
+    pub fn kiga(text: &str) -> Vec<String> {
+        let config = LanguageConfig {
+            alphabets: "a-zA-Z".to_string(),
+            have_capital_letter: true,
+            period: ".".to_string(),
+            question_mark: "?".to_string(),
+            exclamation_mark: "!".to_string(),
+            other_punctuations: vec![],
+        };
+
+        process(text, config)
+    }
+
     pub fn korean(text: &str) -> Vec<String> {
         let config = LanguageConfig {
             alphabets: "a-zA-Z\u{AC00}-\u{D7A3}\u{4000}-\u{9FFF}".to_string(),
@@ -999,6 +1359,19 @@ pub mod processor {
         let config = LanguageConfig {
             alphabets: "a-zA-Z\u{0E80}-\u{0EFF}".to_string(),
             have_capital_letter: false,
+            period: ".".to_string(),
+            question_mark: "?".to_string(),
+            exclamation_mark: "!".to_string(),
+            other_punctuations: vec![],
+        };
+
+        process(text, config)
+    }
+
+    pub fn latgalian(text: &str) -> Vec<String> {
+        let config = LanguageConfig {
+            alphabets: "a-zA-ZĀāČčĒēĢģĶķĻļŅņŌōŠšŪūŽž".to_string(),
+            have_capital_letter: true,
             period: ".".to_string(),
             question_mark: "?".to_string(),
             exclamation_mark: "!".to_string(),
@@ -1060,6 +1433,19 @@ pub mod processor {
         process(text, config)
     }
 
+    pub fn magahi(text: &str) -> Vec<String> {
+        let config = LanguageConfig {
+            alphabets: "a-zA-Z\u{0900}-\u{097F}\u{A8E0}-\u{A8FF}\u{11B00}-\u{11B5F}\u{1CD0}-\u{1CFF}".to_string(),
+            have_capital_letter: false,
+            period: "\u{0964}".to_string(),
+            question_mark: "?".to_string(),
+            exclamation_mark: "!".to_string(),
+            other_punctuations: vec![".".to_string(), "\u{0965}".to_string()],
+        };
+
+        process(text, config)
+    }
+
     pub fn malagasy(text: &str) -> Vec<String> {
         let config = LanguageConfig {
             alphabets: "a-zA-Z".to_string(),
@@ -1108,6 +1494,19 @@ pub mod processor {
             question_mark: "?".to_string(),
             exclamation_mark: "!".to_string(),
             other_punctuations: vec![],
+        };
+
+        process(text, config)
+    }
+
+    pub fn mandeali(text: &str) -> Vec<String> {
+        let config = LanguageConfig {
+            alphabets: "a-zA-Z\u{0900}-\u{097F}\u{A8E0}-\u{A8FF}\u{11B00}-\u{11B5F}\u{1CD0}-\u{1CFF}\u{11680}-\u{116CF}".to_string(),
+            have_capital_letter: false,
+            period: "\u{0964}".to_string(),
+            question_mark: "?".to_string(),
+            exclamation_mark: "!".to_string(),
+            other_punctuations: vec![".".to_string(), "\u{0965}".to_string()],
         };
 
         process(text, config)
@@ -1178,6 +1577,19 @@ pub mod processor {
         process(text, config)
     }
 
+    pub fn nkore(text: &str) -> Vec<String> {
+        let config = LanguageConfig {
+            alphabets: "a-zA-Z".to_string(),
+            have_capital_letter: true,
+            period: ".".to_string(),
+            question_mark: "?".to_string(),
+            exclamation_mark: "!".to_string(),
+            other_punctuations: vec![],
+        };
+
+        process(text, config)
+    }
+
     pub fn norwegian(text: &str) -> Vec<String> {
         let config = LanguageConfig {
             alphabets: "a-zA-ZÆØÅæøå".to_string(),
@@ -1207,6 +1619,19 @@ pub mod processor {
     pub fn ossetian(text: &str) -> Vec<String> {
         let config = LanguageConfig {
             alphabets: "a-zA-Z\u{0400}-\u{04FF}\u{0500}-\u{052F}\u{2DE0}-\u{2DFF}\u{A640}-\u{A69F}\u{1C80}-\u{1C8F}\u{1E030}-\u{1E08F}\u{1D2B}\u{1D78}\u{FE2E}\u{FE2F}".to_string(),
+            have_capital_letter: true,
+            period: ".".to_string(),
+            question_mark: "?".to_string(),
+            exclamation_mark: "!".to_string(),
+            other_punctuations: vec![],
+        };
+
+        process(text, config)
+    }
+
+    pub fn papiamento(text: &str) -> Vec<String> {
+        let config = LanguageConfig {
+            alphabets: "a-zA-Z\u{00A0}-\u{00FF}\u{0100}-\u{017F}".to_string(),
             have_capital_letter: true,
             period: ".".to_string(),
             question_mark: "?".to_string(),
@@ -1290,6 +1715,19 @@ pub mod processor {
             question_mark: "\u{061F}".to_string(),
             exclamation_mark: "!".to_string(),
             other_punctuations: vec!["?".to_string(), "\u{06D4}".to_string()],
+        };
+
+        process(text, config)
+    }
+
+    pub fn quechuan(text: &str) -> Vec<String> {
+        let config = LanguageConfig {
+            alphabets: "a-zA-Z\u{0027}\u{00A0}-\u{00FF}\u{0100}-\u{017F}".to_string(),
+            have_capital_letter: true,
+            period: ".".to_string(),
+            question_mark: "?".to_string(),
+            exclamation_mark: "!".to_string(),
+            other_punctuations: vec![],
         };
 
         process(text, config)
@@ -1568,6 +2006,45 @@ pub mod processor {
         process(text, config)
     }
 
+    pub fn tetum(text: &str) -> Vec<String> {
+        let config = LanguageConfig {
+            alphabets: "a-zA-Z".to_string(),
+            have_capital_letter: true,
+            period: ".".to_string(),
+            question_mark: "?".to_string(),
+            exclamation_mark: "!".to_string(),
+            other_punctuations: vec![],
+        };
+
+        process(text, config)
+    }
+
+    // Fuck muay thai!!!!!!!
+    #[cfg(feature = "thai")]
+    pub fn thai(text: &str) -> Vec<String> {
+        let config = LanguageConfig {
+            alphabets: "a-zA-Z\u{0E00}-\u{0E7F}".to_string(),
+            have_capital_letter: false,
+            period: ".".to_string(),
+            question_mark: "?".to_string(),
+            exclamation_mark: "!".to_string(),
+            other_punctuations: vec![],
+        };
+
+        let first_process = process(text, config);
+
+        let segmenter = thai_processor::ThaiSegmenter::new();
+        let mut final_sentences = Vec::new();
+        for first_chunk in first_process {
+            let sentences = segmenter.segment(&first_chunk);
+            for sentence in sentences {
+                final_sentences.push(sentence.to_string());
+            }
+        }
+
+        final_sentences
+    }
+
     pub fn tibetan(text: &str) -> Vec<String> {
         let config = LanguageConfig {
             alphabets: "a-zA-Z\u{0F00}-\u{0FFF}".to_string(),
@@ -1576,6 +2053,19 @@ pub mod processor {
             question_mark: "\u{2048}".to_string(),
             exclamation_mark: "\u{0FC8}".to_string(),
             other_punctuations: vec!["\u{0F0E}".to_string(), "\u{0F12}".to_string(), "\u{0F00}".to_string(), "\u{0F01}".to_string(), "\u{0F09}".to_string(), "\u{0F0A}".to_string(), ".".to_string()],
+        };
+
+        process(text, config)
+    }
+
+    pub fn tigrinya(text: &str) -> Vec<String> {
+        let config = LanguageConfig {
+            alphabets: "a-zA-Z\u{1200}-\u{137F}".to_string(),
+            have_capital_letter: false,
+            period: "\u{1362}".to_string(),
+            question_mark: "\u{1367}".to_string(),
+            exclamation_mark: "!".to_string(),
+            other_punctuations: vec![],
         };
 
         process(text, config)
@@ -1632,7 +2122,7 @@ pub mod processor {
 
         process(text, config)
     }
-
+    
     pub fn ukrainian(text: &str) -> Vec<String> {
         let config = LanguageConfig {
             alphabets: "a-zA-Z\u{0400}-\u{04FF}\u{0500}-\u{052F}\u{2DE0}-\u{2DFF}\u{A640}-\u{A69F}\u{1C80}-\u{1C8F}\u{1E030}-\u{1E08F}\u{1D2B}\u{1D78}\u{FE2E}\u{FE2F}".to_string(),
@@ -1724,9 +2214,35 @@ pub mod processor {
         process(text, config)
     }
 
+    pub fn wolof(text: &str) -> Vec<String> {
+        let config = LanguageConfig {
+            alphabets: "a-zA-Z\u{00A0}-\u{00FF}\u{0100}-\u{017F}\u{0180}-\u{024F}\u{0250}-\u{02AF}\u{0300}-\u{036F}\u{1E00}-\u{1EFF}\u{0600}-\u{06FF}\u{08A0}-\u{08FF}\u{0870}-\u{089F}\u{FB50}-\u{FDFF}\u{10D00}-\u{10D3F}".to_string(),
+            have_capital_letter: true,
+            period: ".".to_string(),
+            question_mark: "?".to_string(),
+            exclamation_mark: "!".to_string(),
+            other_punctuations: vec!["\u{061F}".to_string(), "\u{06D4}".to_string()],
+        };
+
+        process(text, config)
+    }
+
     pub fn xhosa(text: &str) -> Vec<String> {
         let config = LanguageConfig {
             alphabets: "a-zA-Z".to_string(),
+            have_capital_letter: true,
+            period: ".".to_string(),
+            question_mark: "?".to_string(),
+            exclamation_mark: "!".to_string(),
+            other_punctuations: vec![],
+        };
+
+        process(text, config)
+    }
+
+    pub fn yakut(text: &str) -> Vec<String> {
+        let config = LanguageConfig {
+            alphabets: "a-zA-Z\u{0400}-\u{04FF}\u{0500}-\u{052F}\u{2DE0}-\u{2DFF}\u{A640}-\u{A69F}\u{1C80}-\u{1C8F}\u{1E030}-\u{1E08F}\u{1D2B}\u{1D78}\u{FE2E}\u{FE2F}".to_string(),
             have_capital_letter: true,
             period: ".".to_string(),
             question_mark: "?".to_string(),
@@ -1753,6 +2269,19 @@ pub mod processor {
     pub fn yoruba(text: &str) -> Vec<String> {
         let config = LanguageConfig {
             alphabets: "a-zA-ZẸỌṢẹọṣ".to_string(),
+            have_capital_letter: true,
+            period: ".".to_string(),
+            question_mark: "?".to_string(),
+            exclamation_mark: "!".to_string(),
+            other_punctuations: vec![],
+        };
+
+        process(text, config)
+    }
+
+    pub fn zaza(text: &str) -> Vec<String> {
+        let config = LanguageConfig {
+            alphabets: "a-zA-ZÇçÊêẌẍĞğÎîŞşÛû".to_string(),
             have_capital_letter: true,
             period: ".".to_string(),
             question_mark: "?".to_string(),

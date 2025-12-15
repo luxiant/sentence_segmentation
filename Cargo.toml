@@ -1,10 +1,10 @@
 [package]
 name = "sentence_segmentation"
-version = "1.2.0"
+version = "1.3.0"
 edition = "2021"
 authors = ["Soltia Luxiant <luxiante@gmail.com>"]
-include = ["src/lib.rs", "src/abbreviation_map.json"]
-description = "A rule-based sentence_segmenter, inspired by ruby pragmatic segmenter by diasks2 (repo: https://github.com/diasks2/pragmatic_segmenter)"
+include = ["src/lib.rs", "src/abbreviation_map.json", "model/thai_segmenter.onnx"]
+description = "A rule-based sentence_segmenter, inspired by ruby pragmatic segmenter by diasks2 (repo: https://github.com/diasks2/pragmatic_segmenter). Now with optional AI-based Thai support."
 license = "MIT"
 repository = "https://github.com/luxiant/sentence_segmentation"
 
@@ -12,10 +12,19 @@ repository = "https://github.com/luxiant/sentence_segmentation"
 name = "sentence_segmentation"
 path = "src/lib.rs"
 
+[features]
+default = [] 
+thai = ["dep:burn", "dep:burn-import"]
+
 [dependencies]
 fancy-regex = "0.14.0"
 regex = "1.11.1"
 serde_json = "1.0.132"
+burn = { version = "0.19.1", features = ["ndarray"], optional = true }
+anyhow = { version = "1.0", optional = true }
 
 [package.metadata]
-include = ["src/abbreviation_map.json"]
+include = ["src/abbreviation_map.json", "model/thai_segmenter.onnx"]
+
+[build-dependencies]
+burn-import = { version = "0.19", optional = true }

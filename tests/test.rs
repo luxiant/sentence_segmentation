@@ -2,6 +2,18 @@ use sentence_segmentation::processor;
 
 #[test]
 fn test_sentence_segmentation() {
+    println!("\nTesting sentence segmentation for abazanian.");
+    let sentences = processor::abazanian("Алaквa aбaгa джвыквырцaн? 1. Абaгa гІaпсaн, aпсып гязaнкъвнaмгaхaзуaзтІ. 2. Арi aбaгa гвы aнaтын: https://voorbeeld.com. \t \"Алaквa «aбaр, ужвыбырг aбaгa йaмцІaсуaштІ» ... ухІвaуaтa йaхьыдзун!\" \r Швaбыжтa: ЙымгІвaйсуaз aлaквa *** гвы aрымтуaтa.  ... Арaъa aбaгa хІaйля чІкІвын? Да, мaйбe (или нет).");
+    for sentence in sentences {
+        println!("{}", sentence);
+    }
+
+    println!("\nTesting sentence segmentation for abkhazian.");
+    let sentences = processor::abkhazian("Ушҧаҳәо? 1. Дарбанзаалак иара дшоуп ихы дақәиҭны. 2. Ауаа зегьы зинлеи патулеи еиҟароуп: https://voorbeeld.com. \t \"Ашьаҭа... Ашьаҭа!\" \r Абзиараз: Улар ирымоуп ахшыҩи аламыси, дара дарагь аешьеи аешьеи реиԥш еизыҟазароуп *** .  ... Бзиа збаша? Да, мaйбe (или нет).");
+    for sentence in sentences {
+        println!("{}", sentence);
+    }
+
     println!("\nTesting sentence segmentation for afrikaans.");
     let sentences = processor::afrikaans("Hoe gaan dit? 1. Die projek is belangrik, maar 2. ons moet hierdie webwerf besoek: https://voorbeeld.com. \t \"Ek dink nie... dit maak sin nie!\" sê hy. \r Byvoorbeeld: Hierdie *** is nie regtig nodig nie.  ... Sal jy môre kom? Ja, miskien (of nie).");
     for sentence in sentences {
@@ -50,8 +62,26 @@ fn test_sentence_segmentation() {
         println!("{}", sentence);
     }
 
+    println!("\nTesting sentence segmentation for balochi.");
+    let sentences = processor::balochi("چۆں ئی؟ 1. بلۏچی زبان آکھتی ہے۔ 2. بلۏچی شمال مغربی ایرانی زبان آکھتی ہے: https://voorbeeld.com. \t \"بلۏچی وچ اسپلٹ ارگاتیویٹی آکھتی ہے... !\" \r مثال: یاک یکّ *** .  ... پاکستان وچ ۶.۲۸ ملین بولنی والے ھین؟ ہاں، شاید (یا نہ).");
+    for sentence in sentences {
+        println!("{}", sentence);
+    }
+
+    println!("\nTesting sentence segmentation for bambara.");
+    let sentences = processor::bambara("I ni ce? 1. N bɛ se ka dumuni kɛ, nka 2. a ka kan ka nin siti in sɔrɔ: https://voorbeeld.com. \t \"N' ye min kɛ... a ye min ye!\" a ye. \r Misali: Nin ye *** tɛ dɔɔni dɔɔni.  ... I bɛ na tuma min na? Ɛɛ, a bɛ se (wɔlɔ a tɛ se).");
+    for sentence in sentences {
+        println!("{}", sentence);
+    }
+
     println!("\nTesting sentence segmentation for basque.");
     let sentences = processor::basque("Zelan zaude? 1. Proiektua amaitzea garrantzitsua da. 2. Ikusi webgune hau: www.adibidea.eus.  \n \"Hau... ez da erraza,\" esan zuen. \t Adibidez: Hau ***ohiz kanpoko arazo bat*** da.  ... Bihar etorriko zara? Bai, agian (edo ez).");
+    for sentence in sentences {
+        println!("{}", sentence);
+    }
+
+    println!("\nTesting sentence segmentation for beja.");
+    let sentences = processor::beja("كم حالك؟ 1. اللغة البجاوية مثيرة للاهتمام, لكن 2. يجب زيارة هذا الموقع: https://voorbeeld.com. \t \"أعتقد أن... لا يعقل!\" قال. \r على سبيل المثال: هذا *** ليس ضروريًا حقًا.  ... هل تأتي غدًا؟ نعم، ربما (أو لا).");
     for sentence in sentences {
         println!("{}", sentence);
     }
@@ -64,6 +94,18 @@ fn test_sentence_segmentation() {
 
     println!("\nTesting sentence segmentation for bengali.");
     let sentences = processor::bengali("কেমন আছো? 1. প্রকল্পটি সম্পন্ন করা জরুরি। 2. এই ওয়েবসাইটটি দেখো: www.abc.com.  \n \"এটা... সহজ নয়,\" সে বলল। \t উদাহরণস্বরূপ: এটি ***অস্বাভাবিক সমস্যা***।  ... তুমি কি কাল আসবে? হ্যাঁ, হয়তো (বা না)।");
+    for sentence in sentences {
+        println!("{}", sentence);
+    }
+
+    println!("\nTesting sentence segmentation for brahui.");
+    let sentences = processor::brahui("نے امرُس؟ 1. مُچَّا اِنسَاںک آجو او اِزَّت نَا رِد اَٹ بَرےبَر وَدِى مَسُّنو. 2. اوفتے پُهِى او دَلِىل رَسےںگَانے: https://voorbeeld.com. \t \"اَندَادے وفتے اَسِ اےلو تون اِىلُمِى اے وَدِّفوئِى اے... !\" \r مثال: ایک *** .  ... نُم جورورے؟ ہاں، شاید (یا نہیں).");
+    for sentence in sentences {
+        println!("{}", sentence);
+    }
+
+    println!("\nTesting sentence segmentation for bhojpuri.");
+    let sentences = processor::bhojpuri("का हाल बा? 1. हम ठीक बानी, लेकिन 2. इ साइट देखल जाव: https://voorbeeld.com. \t \"हम सोचत बानी... ई मतलब नइखे राखत!\" ऊ कहले। \r उदाहरण: ई *** वास्तव में जरूरी नइखे।  ... का तू काल्ह आवत बाड़ऽ? हाँ, शायद (या ना).");
     for sentence in sentences {
         println!("{}", sentence);
     }
@@ -82,6 +124,12 @@ fn test_sentence_segmentation() {
 
     println!("\nTesting sentence segmentation for burmese.");
     let sentences = processor::burmese("နေကြတယ်လား? 1. ပရောဂျက်ကိုပြီးစီးရမည်။ 2. ဤဝက်ဘ်ဆိုဒ်ကိုကြည့်ပါ: abac.com.  \n \"ဒါ...လွယ်ကူခြင်းမဟုတ်ပါ,\" သူပြောသည်။ \t ဥပမာအားဖြင့်: ဤသည် ***ထူးခြားသောပြဿနာ*** ဖြစ်သည်။  ... မနက်ဖြန်လာမလား? ဟုတ်တယ်၊ အခြားအခြေအနေများမှာ (သို့မဟုတ် မဟုတ်)။");
+    for sentence in sentences {
+        println!("{}", sentence);
+    }
+
+    println!("\nTesting sentence segmentation for buryat.");
+    let sentences = processor::buryat("Сайн байна уу? 1. Эгсэ-континентальна уларилтай, Ази түбиин дундахи уула майлатай газарта. 2. Хүйтэн үбэл ба халуун зун болодог: https://voorbeeld.com. \t \"Хуурай агаар... энэ утгагүй!\" гэж хэлэв. \r Жишээлбэл: Энэ *** шаардлагатай биш.  ... Та маргааш ирэх үү? Тийм, магадгүй (эсвэл үгүй).");
     for sentence in sentences {
         println!("{}", sentence);
     }
@@ -110,6 +158,12 @@ fn test_sentence_segmentation() {
         println!("{}", sentence);
     }
 
+    println!("\nTesting sentence segmentation for corsican.");
+    let sentences = processor::corsican("Cumu va? 1. U prughjettu hè impurtante, ma 2. duvemu visità stu situ web: https://voorbeeld.com. \t \"Pensu chì no... ùn hà micca sensu!\" disse ellu. \r Per esempiu: Stu *** ùn hè micca veramente necessariu.  ... Venerete dumane? Iè, forse (o micca).");
+    for sentence in sentences {
+        println!("{}", sentence);
+    }
+
     println!("\nTesting sentence segmentation for creole.");
     let sentences = processor::creole("Kijan ou ye? 1. Pwojè a dwe fini. 2. Ale sou sit entènèt sa a: www.example.com. \n \"Sa pa... fasil,\" li di. \t Pa egzanp, sa a se yon ***pwoblèm ki ra***. ... Ou pral vini demen? Petèt, swa wi (oswa non).");
     for sentence in sentences {
@@ -134,6 +188,12 @@ fn test_sentence_segmentation() {
         println!("{}", sentence);
     }
 
+    println!("\nTesting sentence segmentation for dargwa.");
+    let sentences = processor::dargwa("Пачала хӀукуматла замана? 1. Нушала шила хозяйство гӀелакабухъи бири, но 2. посетить этот сайт: https://voorbeeld.com. \t \"Бахъалгъунти хъубзури мискиндешлизиб... ва цӀябдешлизиб хӀербирутири!\" сказал он. \r Например: Это *** не обязательно.  ... Ты придешь завтра? Да, возможно (или нет).");
+    for sentence in sentences {
+        println!("{}", sentence);
+    }
+
     println!("\nTesting sentence segmentation for dinka.");
     let sentences = processor::dinka("Nɛɛɣɔɔ? 1. Kɔmɔlɔk nɛ ɛɔ̈t. 2. Jɔk ci website: www.example.com. \n \"Mɛl kɔɔr... ra,\" ɣɔr. \t Lɔm, kɔɔr ***ɛtɔ̈ɔt kɔɔr***. ... Kɔɔkɔɔ ɛtɛɛ? Nɛɛ, bɛɛ nɛ (ɔɔ bɛɛ).");
     for sentence in sentences {
@@ -148,6 +208,12 @@ fn test_sentence_segmentation() {
 
     println!("\nTesting sentence segmentation for english.");
     let sentences = processor::english("How are you? 1. The project needs to be completed. 2. Visit this website: www.example.com.  \n \"This... isn't easy,\" he said. \t For example: This is a ***very unusual problem***.  ... Will you come tomorrow? Yes, maybe (or not).");
+    for sentence in sentences {
+        println!("{}", sentence);
+    }
+
+    println!("\nTesting sentence segmentation for erzya.");
+    let sentences = processor::erzya("Кода тевтне? 1. Весе ломантне чачить олякс, ёнчинь ды правань коряс вейкетекс. 2. Сынст улить превест ды чамачист, вейкень-вейкень коряс пряст сыненст ветяма ялгань ёжо марто: https://voorbeeld.com. \t \"Паро, сюкпря... это не имеет смысла!\" сказал он. \r Например: Это *** не обязательно.  ... Ты придешь завтра? Да, возможно (или нет).");
     for sentence in sentences {
         println!("{}", sentence);
     }
@@ -176,6 +242,12 @@ fn test_sentence_segmentation() {
         println!("{}", sentence);
     }
 
+    println!("\nTesting sentence segmentation for frisian.");
+    let sentences = processor::frisian("Hoe giet it? 1. It projekt is wichtich, mar 2. wy moatte dizze webside besykje: https://voorbeeld.com. \t \"Ik tink net... dat makket sin net!\" sei er. \r Bygelyks: Dit *** is net echt nedich.  ... Komst do moarn? Ja, miskien (of net).");
+    for sentence in sentences {
+        println!("{}", sentence);
+    }
+
     println!("\nTesting sentence segmentation for galician.");
     let sentences = processor::galician("Como estás? 1. O proxecto debe rematar. 2. Visita este sitio web: www.example.com. \n \"Isto non é... doado,\" dixo el. \t Exemplificando, isto é un ***problema inusual***. ... Virás mañá? Quizais, pode que si (ou non).");
     for sentence in sentences {
@@ -184,6 +256,12 @@ fn test_sentence_segmentation() {
 
     println!("\nTesting sentence segmentation for ganda.");
     let sentences = processor::ganda("Oli otem? 1. Eyin omukubuga kwekikozese. 2. Funa oluwebusaiti: www.example.ug.  \n \"Ono... tekikyo kya,\" yagamba. \t Ekyokulabirako: Kino kye ***kizibu ekitali kimu***.  ... Ojja ola? Yee, ennaku (oba nedda).");
+    for sentence in sentences {
+        println!("{}", sentence);
+    }
+
+    println!("\nTesting sentence segmentation for gedeo.");
+    let sentences = processor::gedeo("Baro yo’oka hulluuqqe? 1. Fuggoxxi ha’noo uuddoqqe. 2. Tarkaafatte: https://voorbeeld.com. \t \"Belto ha’no’a horto... ulfaatte!\" \r Mine konne’a eloxxi yaane duuchcha kaddowwaal.  ... Galle hosse? Da, shayee (walla mitti).");
     for sentence in sentences {
         println!("{}", sentence);
     }
@@ -206,6 +284,12 @@ fn test_sentence_segmentation() {
         println!("{}", sentence);
     }
 
+    println!("\nTesting sentence segmentation for guarani.");
+    let sentences = processor::guarani("Mba'éichapa reiko? 1. Che roryete roikuaávo, ha 2. eñe'ê mbegueve este sitio: https://voorbeeld.com. \t \"Ndaikuaái la ereséva... Tereho!\" \r Ejemplo: Peteî ñe'ê ndohupytypái *** no es necesario.  ... Reñe’êkuaápa guaraníme? Hêe, ikatu (nahániri).");
+    for sentence in sentences {
+        println!("{}", sentence);
+    }
+
     println!("\nTesting sentence segmentation for gujarati.");
     let sentences = processor::gujarati("તમારો હાલ કયા છે? 1. પ્રોજેક્ટ પૂર્ણ કરવો જોઈએ. 2. આ વેબસાઇટ પર જાઓ: www.udaharan.in.  \n \"આ... સરળ નથી,\" તે કહેતા હતા. \t ઉદાહરણ તરીકે: આ એક ***વિશિષ્ટ સમસ્યા*** છે.  ... તમે કાલે આવશે? હા, કદાચ (કિંમત નહિ).");
     for sentence in sentences {
@@ -220,6 +304,12 @@ fn test_sentence_segmentation() {
 
     println!("\nTesting sentence segmentation for hebrew.");
     let sentences = processor::hebrew("מה שלומך? 1. עליך לסיים את הפרויקט. 2. בקר באתר זה: www.example.co.il.  \n \"זה... לא פשוט,\" אמר הוא. \t לדוגמה: זו בעיה ***לא רגילה***.  ... תבוא מחר? כן, אולי (או לא).");
+    for sentence in sentences {
+        println!("{}", sentence);
+    }
+
+    println!("\nTesting sentence segmentation for hiligaynon.");
+    let sentences = processor::hiligaynon("Kamusta ka? 1. Ang proyekto importante gid, pero 2. kinahanglan naton bisitahon ini nga website: https://voorbeeld.com. \t \"Wala ko maghunahuna... indi ini makatarungan!\" nagsiling siya. \r Pananglitan: Ini *** indi gyud kinahanglanon.  ... Muabot ka ugma? Hu-o, tingali (o indi).");
     for sentence in sentences {
         println!("{}", sentence);
     }
@@ -290,6 +380,18 @@ fn test_sentence_segmentation() {
         println!("{}", sentence);
     }
 
+    println!("\nTesting sentence segmentation for kabyle.");
+    let sentences = processor::kabyle("Axir ay ulac? 1. Taqbaylit d tamaziɣt n tmurt n Lezzayer, wanag 2. selken asmel-a: https://voorbeeld.com. \t \"Ur sɛiɣ ara... ur yettxemmim ara!\" yenna-yas. \r D amedya: Aya *** ur ilaq ara teɣwi.  ... Ad d-tedduḍ azekka? Ih, ahat (neɣ ala).");
+    for sentence in sentences {
+        println!("{}", sentence);
+    }
+
+    println!("\nTesting sentence segmentation for kangri.");
+    let sentences = processor::kangri("तुसादा नाम क्या है? 1. उनी सेव खाद्या, लेकिन 2. हमें इस साइट को देखना चाहिए: https://voorbeeld.com. \t \"मैं सोचता हूं... यह सेंस नहीं बनता!\" उन्होंने कहा। \r उदाहरण: यह *** वास्तव में जरूरी नहीं है।  ... क्या तуса कल आओगे? हाँ, शायद (या नहीं).");
+    for sentence in sentences {
+        println!("{}", sentence);
+    }
+
     println!("\nTesting sentence segmentation for kannada.");
     let sentences = processor::kannada("ಹೇಗಿದ್ದೀಯೆ? 1. ಯೋಜನೆ ಪೂರ್ಣಗೊಳ್ಳಬೇಕು. 2. ಈ ವೆಬ್‌ಸೈಟ್‌ಗೆ ಹೋಗಿ: www.example.com. \n \"ಇದು ಸಹಜ... ಅಲ್ಲ,\" ಅವನು ಹೇಳಿದರು. \t ಉದಾಹರಣೆಗೆ, ಇದು ***ಅಸಾಮಾನ್ಯ ಸಮಸ್ಯೆ***. ... ನಾಳೆ ಬರುವಿರಾ? ಬಹುಶಃ, ಸಾಧ್ಯವಿದೆ (ಅಥವಾ ಇಲ್ಲ).");
     for sentence in sentences {
@@ -310,6 +412,18 @@ fn test_sentence_segmentation() {
 
     println!("\nTesting sentence segmentation for khmer.");
     let sentences = processor::khmer("សុខសប្បាយរូបរាង? 1. គម្រោងត្រូវតែបញ្ចប់។ 2. សូមចូលទៅកាន់វេបសាយនេះ: www.example.kh.  \n \"នេះ... មិនមែនងាយទេ,\" គាត់បាននិយាយ។ \t ឧទាហរណ៍: នេះគឺជាបញ្ហា ***ដែលមិនធម្មតា***។  ... អ្នកនឹងមកស្អែកទេ? បាទ ប្រហែល (ឬមិនទេ)។");
+    for sentence in sentences {
+        println!("{}", sentence);
+    }
+
+    println!("\nTesting sentence segmentation for khoekhoe.");
+    let sentences = processor::khoekhoe("Matisa? 1. ǂKam ǃũi-aob gye ǁẽib di gūna ǃhomi ǃna gye ǃũi hã i, nka 2. kinahanglan naton bisitahon ini nga website: https://voorbeeld.com. \t \"ǀGui tsēb gye ǃgare-ǀuiï di ǃkhareï ei heiï di somi ǃna gye... !Gâi !gâb!\" \r For example: This *** is not necessary.  ... !Gâi ǀhôas? Êê, ahat (Aiee).");
+    for sentence in sentences {
+        println!("{}", sentence);
+    }
+
+    println!("\nTesting sentence segmentation for kiga.");
+    let sentences = processor::kiga("Agandi? 1. Ndi gye, nka 2. twetegyereze omutindo guno: https://voorbeeld.com. \t \"Ndi gye... shana iwe!\" yenna. \r Omukyere: Eno *** ti eri kugyenda.  ... Oza ryari? Ee, shayee (oba to).");
     for sentence in sentences {
         println!("{}", sentence);
     }
@@ -344,6 +458,12 @@ fn test_sentence_segmentation() {
         println!("{}", sentence);
     }
 
+    println!("\nTesting sentence segmentation for latgalian.");
+    let sentences = processor::latgalian("Kai tu dzeivoj? 1. Projekts ir svarigs, bet 2. mes drebam apmekleit itu lopu: https://voorbeeld.com. \t \"As dūmoju... tys naiz jēgys!\" vīns teice. \r Piemiers: Itys *** na vysai vajadzejis.  ... Vai tu rytdīn atīsi? Jā, varbūt (vai nai).");
+    for sentence in sentences {
+        println!("{}", sentence);
+    }
+
     println!("\nTesting sentence segmentation for latvian.");
     let sentences = processor::latvian("Sveiki! 1. Projekts jābeidz. 2. Lūdzu, apmeklējiet šo vietni: www.example.lv.  \n \"Tas... nav viegli,\" viņš teica. \t Piemēram: Tas ir ***ļoti neparasts problēma***.  ... Vai tu nāksi rīt? Jā, iespējams (vai nē).");
     for sentence in sentences {
@@ -358,6 +478,12 @@ fn test_sentence_segmentation() {
 
     println!("\nTesting sentence segmentation for macedonian.");
     let sentences = processor::macedonian("Здраво! 1. Проектот треба да се заврши. 2. Ве молиме посетете ја оваа веб-страница: www.example.mk.  \n \"Ова... не е лесно,\" рече тој. \t Пример: Ова е ***многу ретка ситуација***.  ... Ќе дојдеш утре? Да, можеби (или не).");
+    for sentence in sentences {
+        println!("{}", sentence);
+    }
+
+    println!("\nTesting sentence segmentation for magahi.");
+    let sentences = processor::magahi("कैसन हखिन? 1. हम ठीक हियो, लेकिन 2. इ साइट देखऽ: https://voorbeeld.com. \t \"हम सोचऽऽ हियो... ई समझ में नयँ ऐलो!\" ऊ कहले। \r उदाहरण: ई *** जरूरी नयँ।  ... तू कल आवऽ? हाँ, शायद (या नयँ).");
     for sentence in sentences {
         println!("{}", sentence);
     }
@@ -382,6 +508,12 @@ fn test_sentence_segmentation() {
 
     println!("\nTesting sentence segmentation for maltese.");
     let sentences = processor::maltese("Kif inti? 1. Il-proġett għandu jitlesta. 2. Żur dan is-sit web: www.example.com. \n \"Dan mhuwiex... faċli,\" qal hu. \t Bħal eżempju, dan hu ***problema mhux komuni***. ... Se tiġi għada? Forse, jista' jkun iva (jew le).");
+    for sentence in sentences {
+        println!("{}", sentence);
+    }
+
+    println!("\nTesting sentence segmentation for mandeali.");
+    let sentences = processor::mandeali("तुसीं किदां आ? 1. प्रोजेक्ट महत्वपूर्ण है। 2. इस साइट को देखो: https://example.com! \"मैं सोचता नहीं... यह सेंस बनाता नहीं!\" वह कहता है। उदाहरण: यह *** जरूरी नहीं है। ... कल आएगा? हाँ, शायद (या नहीं)।");
     for sentence in sentences {
         println!("{}", sentence);
     }
@@ -416,6 +548,12 @@ fn test_sentence_segmentation() {
         println!("{}", sentence);
     }
 
+    println!("\nTesting sentence segmentation for nkore.");
+    let sentences = processor::nkore("Oraire ota? 1. Oraire gye, ariko 2. twine okureeba website: https://example.com. \"Ndyaho, webare... tikiri rwara!\" ariyo. Omu byerekaniso: Eki *** nikimanyisa. ... Oija orwokubiri? Ee, kandi (oba aha). Ninza kukareba shaha munaana nekicweka zihangwe.");
+    for sentence in sentences {
+        println!("{}", sentence);
+    }
+
     println!("\nTesting sentence segmentation for norwegian.");
     let sentences = processor::norwegian("Hei! 1. Prosjektet må fullføres. 2. Vennligst besøk denne nettsiden: www.example.no.  \n \"Dette... er ikke lett,\" sa han. \t For eksempel: Dette er ***et veldig sjeldent tilfelle***.  ... Kommer du i morgen? Ja, kanskje (eller ikke).");
     for sentence in sentences {
@@ -430,6 +568,12 @@ fn test_sentence_segmentation() {
 
     println!("\nTesting sentence segmentation for ossetian.");
     let sentences = processor::ossetian("Хъæуы иу? 1. Проект æвдæмæй хуыдты. 2. Фæссæйтæн адæмæ: www.example.com. \n \"Æнæзæн... æсгæу,\" хъуыдты. \t Уæдæу, æйы ***гæнзæн фæдæг***. ... Бæрæнтæй хъæуы? Сæвæд, æнæн фæрæ (æнæн).");
+    for sentence in sentences {
+        println!("{}", sentence);
+    }
+
+    println!("\nTesting sentence segmentation for papiamento.");
+    let sentences = processor::papiamento("Con ta bai? 1. E proyekto ta importante, pero 2. nos mester bishita e web: https://example.com. \t \"Mi no sa... esaki ta dushi!\" e bisa. \r Por ehempel: Esaki *** no ta nesesario.  ... Bo ta bini mañan? Si, kisas (o no).");
     for sentence in sentences {
         println!("{}", sentence);
     }
@@ -466,6 +610,12 @@ fn test_sentence_segmentation() {
 
     println!("\nTesting sentence segmentation for western punjabi.");
     let sentences = processor::punjabi_western("سلام! 1. اِس پراجیکٹ کو مکمل کرنا ضروری ہے۔ 2. براہ کرم اس ویب سائٹ پر جائیں: www.example.pk.  \n \"یہ... آسان نہیں ہے،\" اُس نے کہا۔ \t مثال کے طور پر: یہ ***بہت نادر مسئلہ*** ہے۔  ... کیا آپ کل آئیں گے؟ ہاں، شاید (یا نہیں)۔");
+    for sentence in sentences {
+        println!("{}", sentence);
+    }
+
+    println!("\nTesting sentence segmentation for quechuan.");
+    let sentences = processor::quechuan("Imaynallam? 1. Kay llank'ayqa importante, icha 2. kay webta qhawana: https://example.com. \t \"Manam yachanim... kayqa allinmi!\" nispa. \r Chayqa: Kay *** mana allinchu.  ... Q'aya hamunki? Ari, icha (mana).");
     for sentence in sentences {
         println!("{}", sentence);
     }
@@ -596,8 +746,29 @@ fn test_sentence_segmentation() {
         println!("{}", sentence);
     }
 
+    println!("\nTesting sentence segmentation for tetum.");
+    let sentences = processor::tetum("Di'ak ka lae? 1. Projetu nee importante, maibé 2. ita tenke vizita pájina web: https://example.com. \t \"Hau la hatene... nee di'ak!\" nia dehan. \r Ezemplu: Nee *** la presiza.  ... Ita mai aban? Sin, kala (ka lae).");
+    for sentence in sentences {
+        println!("{}", sentence);
+    }
+
+    #[cfg(feature = "thai")]
+    {
+        println!("\nTesting sentence segmentation for thai.");
+        let sentences = processor::thai("สวัสดีครับ! 1. โครงการนี้ต้องเสร็จสิ้น 2. โปรดเยี่ยมชมเว็บไซต์นี้: www.example.com \n \"มัน... ไม่ง่ายเลย\" เขาบอก \t ตัวอย่างเช่น: ***นี่เป็นปัญหาที่หายาก*** ... พรุ่งนี้คุณจะมาไหม? ใช่ บางที (หรืออาจจะไม่)");
+        for sentence in sentences {
+            println!("{}", sentence);
+        }
+    }
+
     println!("\nTesting sentence segmentation for tibetan.");
     let sentences = processor::tibetan("བཀྲ་ཤིས་། ཁྱེད་ཀྱིས་ག་རེ་འདུག? 1. གྲོལ་འགོ་བའི་འབྲེལ་བ་འགུལ་བ་འདུག. 2. འདི་ནང་ཡིག་འཕྲིན་འདོན་འགུལ་འདུག: www.example.com. \n \"འདུག་པ་ལས... སྤྱིར་ན་མེད།\" འདུག་ངེས། \t བརྡེད་ལས, འདུག ***མི་འདུག་པ་དེ་འགྲོལ་མེད།***. ... ཉིན་ལ་འགྲོལ་གུག? ངག་མཐའ་དུ, ང་མི་འདུག (ཡང་ཡོང).");
+    for sentence in sentences {
+        println!("{}", sentence);
+    }
+
+    println!("\nTesting sentence segmentation for tigrinya.");
+    let sentences = processor::tigrinya("እንኳን ደስ ያለሽ፧ 1. ፕሮጀክቱ ኣስፈላሽ ኣሎ፣ ግን 2. ኣብዚ ድር ገጽ ኣተገብርና፡ https://example.com። \t \"ኣይገብርን... ጽንፈኛ ኣለዎ!\" ብሉ። \r ለምንታይ፡ ዝኾነ ኣይኮነን።  ... ኣብ ቅዳሜ ክትመጽእ ትደሊፍ፧ እስከ፣ ምኽንያት (ወይ ምንም)።");
     for sentence in sentences {
         println!("{}", sentence);
     }
@@ -668,8 +839,20 @@ fn test_sentence_segmentation() {
         println!("{}", sentence);
     }
 
+    println!("\nTesting sentence segmentation for wolof.");
+    let sentences = processor::wolof("Na nga def? 1. Projet bi importante, waaye 2. nu war a jàng site web bi: https://example.com. \t \"Degguma... nee na neex na!\" nia wax. \r Misal: Nee *** la warul.  ... Nga dem aban? Waaw, kala (wallu déedéyt).");
+    for sentence in sentences {
+        println!("{}", sentence);
+    }
+
     println!("\nTesting sentence segmentation for xhosa.");
     let sentences = processor::xhosa("Molo! 1. Kufuneka siphelise le projekthi. 2. Nceda uhambe kwiwebhusayithi: www.example.co.za.  \n \"Oku... akulula,\" utshilo. \t Umzekelo: ***Le yimeko enqamleqayo***.  ... Uzakufika kusasa? Ewe, mhlawumbi (okanye hayi).");
+    for sentence in sentences {
+        println!("{}", sentence);
+    }
+
+    println!("\nTesting sentence segmentation for yakut.");
+    let sentences = processor::yakut("Хайдах олороҕун? 1. Проект важный, оттон 2. биһиги бу сайт көрүөхпүт наада: https://example.com. \t \"Билбэппин... бу үчүгэй!\" ниспа. \r Холобур: Бу *** суох наада.  ... Эн сарсын кэлэҕин дуо? Сөп, баҕар (эбэтэр суох).");
     for sentence in sentences {
         println!("{}", sentence);
     }
@@ -682,6 +865,12 @@ fn test_sentence_segmentation() {
 
     println!("\nTesting sentence segmentation for yoruba.");
     let sentences = processor::yoruba("Bawo! 1. A gbọdọ pari iṣẹ́ akanṣe yìí. 2. Jọwọ lọ si oju opo wẹẹbu: www.example.com.  \n \"Eyi... kò rọọrun,\" ni ó sọ. \t Àpẹẹrẹ: ***Èyí jẹ́ iṣoro tí kò wọpọ***.  ... Ṣé iwọ yoo wá lọ́la? Béẹ ni, bóyá (tàbí bẹ́ẹ̀ kọ).");
+    for sentence in sentences {
+        println!("{}", sentence);
+    }
+
+    println!("\nTesting sentence segmentation for zaza.");
+    let sentences = processor::zaza("Ti senên a? 1. Proje zaf muhîm o, lê 2. ma ganî vê malperê ziyaret bikin: https://example.com. \t \"Ez fam nêkena... ev ma'no dide!\" ey got. \r Nimûne: Ev *** ne pêwîst e.  ... Tu ê sibê têyî? Belê, belkî (yan na).");
     for sentence in sentences {
         println!("{}", sentence);
     }
