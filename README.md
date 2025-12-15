@@ -186,7 +186,7 @@ fn main() {
 
 ## For Thai Users
 
-Thai usually does not use punctuations to end sentences, so I applied a simple cnn model to separate sentences, in order not to unnecessarily install the related crates such as burn, thai sentence segmenting function is in separate flag. You can activate the function by specifying feature in cargo.toml,
+Thai usually does not use punctuations to end sentences, so I applied a simple cnn model to separate sentences. in order not to unnecessarily install the related crates such as burn, thai sentence segmenting function is in separate flag. You can activate the function by specifying feature in cargo.toml,
 
 ```
 [dependencies]
