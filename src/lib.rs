@@ -2,7 +2,7 @@ const ABBREVIATION_MAP_JSON: &str = include_str!("abbreviation_map.json");
 
 #[cfg(feature = "thai")]
 mod model {
-    include!(concat!(std::env::var("OUT_DIR").unwrap(), "/model/thai_segmenter.rs"));
+    include!(concat!(env!("OUT_DIR"), "/model/thai_segmenter.rs"));
 }
 
 #[cfg(feature = "thai")]
