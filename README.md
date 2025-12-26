@@ -1,6 +1,6 @@
 # Sentence Segmentation
 
-This is a regex rule-based sentence segmenter written in pure rust. This crate is inspired by the Ruby Pragmatic Segmenter by diasks2 ([GitHub Repo](https://github.com/diasks2/pragmatic_segmenter)).
+This is a regex rule-based sentence segmenter written in pure Rust. This crate is inspired by the Ruby Pragmatic Segmenter by diasks2 ([GitHub Repo](https://github.com/diasks2/pragmatic_segmenter)).
 
 ## Features
 
@@ -186,7 +186,7 @@ fn main() {
 
 ## For Thai Users
 
-Thai usually does not use punctuations to end sentences, so I applied a simple cnn model to separate sentences. in order not to unnecessarily install the related crates such as burn, thai sentence segmenting function is in separate flag. You can activate the function by specifying feature in cargo.toml,
+Since Thai rarely uses punctuation to end sentences, I used a simple CNN to separate sentences. To avoid unnecessarily installing related crates, such as burn, the Thai sentence segmentation function is in a separate flag. You can activate the function by specifying the feature in cargo.toml,
 
 ```
 [dependencies]
